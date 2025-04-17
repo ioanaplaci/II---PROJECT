@@ -1,0 +1,153 @@
+body {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    background: url('image.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(13,12,29,0.5), rgba(13,12,29,0.5));
+    z-index: 1;
+}
+
+.hex-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        /* First hexagon layer */
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='104' viewBox='0 0 120 104'%3E%3Cpolygon points='30,2 90,2 118,52 90,102 30,102 2,52' fill='none' stroke='%23f4d35e' stroke-width='4'/%3E%3C/svg%3E"),
+        /* Second offset hexagon layer */
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='104' viewBox='0 0 120 104'%3E%3Cpolygon points='30,2 90,2 118,52 90,102 30,102 2,52' fill='none' stroke='%23f4d35e' stroke-width='4'/%3E%3C/svg%3E");
+    background-size: 190px 110px;
+    background-position:
+            10px 100px,                      /* First layer position */
+            675px 153px;                 /*Second layer offset */
+    background-repeat: repeat;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.login-container {
+    position: relative;
+    background: white;
+    padding: 2.5rem 1.5rem;
+    border-radius: 20px;
+    z-index: 3;
+    text-align: center;
+    box-shadow:
+            0 10px 30px rgba(0,0,0,0.3), /* Original shadow */
+            8px 8px 0 rgba(0,0,0,0.4); /* 3D offset shadow */
+    transition: all 0.3s ease;
+}
+
+
+h1 {
+    font-size: 4rem;
+    margin-bottom: 0.25rem;
+    color: #0D0C1D;
+    text-shadow:
+            1px 1px 0 #F4D35E,
+            2px 2px 0 #F4D35E,
+            3px 3px 0 #e9bd47;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #161B33;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 60%;
+    padding: 0.75rem 1rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 10px;
+    background-color: #161B33;
+    color: white;
+    font-size: 1rem;
+    box-shadow:
+            0 10px 10px rgba(0,0,0,0.3), /* Original shadow */
+            3px 3px 0 rgba(0,0,0,0.2); /* 3D offset shadow */
+}
+
+input::placeholder {
+    color: #ccc;
+}
+
+.login-btn {
+    background-color: #F4D35E;
+    color: #0D0C1D;
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 0.7rem 2rem;
+    border: none;
+    border-radius: 30px;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow:
+            0 10px 30px rgba(233, 189, 71, 0.3), /* Original shadow */
+            3px 3px 0 rgba(233, 189, 71, 0.9); /* 3D offset shadow */
+}
+
+.login-btn:hover {
+    background-color: #e9bd47;
+}
+
+/* for the link of the new pages */
+.options {
+    margin-top: 2.5rem;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #0D0C1D;
+}
+
+.options a {
+    text-decoration: none;
+    color: #0D0C1D;
+    font-weight: bold;
+    margin: 0 25px; /* 15px space on left/right of each link */
+
+}
+
+.create-new-account-link {
+    background: #F4D35E;
+    padding: 0 5px;
+    border-radius: 5px;
+    color: #0D0C1D;
+    box-shadow:
+            0 10px 30px rgba(233, 189, 71, 0.3), /* Original shadow */
+            3px 3px 0 rgba(233, 189, 71, 0.9); /* 3D offset shadow */
+}
+
+.create-new-account-link:hover {
+    background-color: #e9bd47;
+}
+
+.forgot-password-link {
+    background: #F4D35E;
+    padding: 0 5px;
+    border-radius: 5px;
+    color: #0D0C1D;
+    box-shadow:
+            0 10px 30px rgba(233, 189, 71, 0.3), /* Original shadow */
+            3px 3px 0 rgba(233, 189, 71, 0.9); /* 3D offset shadow */
+}
+
+.forgot-password-link:hover {
+    background-color: #e9bd47;
+
+}

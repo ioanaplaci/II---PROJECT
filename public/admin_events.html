@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EventHive - Admin Page</title>
+  <link rel="stylesheet" href="admin_events.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css">
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <div class="logo">
+        <img src="Logo.png" alt="Logo" class="logo-img">
+        <h2>EventHive</h2>
+      </div>
+      <nav>
+        <ul>
+          <li><button><i class="fi fi-sr-calendar-star"></i> Events</button></li>
+          <li><button><i class="fi fi-sr-users-alt"></i> Users</button></li>
+          <li><button><i class="fi fi-br-chat-arrow-grow"></i> Analytics</button></li>
+        </ul>
+      </nav>
+      <div class="logout">
+       <ul><button><i class="fi fi-br-exit"></i> Logout</button> </ul>
+      </div>
+    </div>
+
+    <main>
+      <header>
+        <h1>Events</h1>
+        <div class="user-icon">
+          <i class="fi fi-sr-user"></i>
+        </div>
+      </header>
+
+      <div class="events-columns">
+        <div class="column">
+          <h2>Active Events</h2>
+          <div class="card">
+            <label>Name: <input type="text" value="Summer Festival" readonly></label>
+            <label>Location: <input type="text" value="New York" readonly></label>
+            <label>Tickets Available: <input type="text" value="150" readonly></label>
+            <label>Tickets Sold: <input type="text" value="350" readonly></label>
+            <div class="actions bottom">
+              <button class="minus"><i class="fi fi-sr-minus-circle"></i></button>
+            </div>
+          </div>
+          <div class="card">
+            <label>Name: <input type="text" value="Tech Expo" readonly></label>
+            <label>Location: <input type="text" value="San Francisco" readonly></label>
+            <label>Tickets Available: <input type="text" value="80" readonly></label>
+            <label>Tickets Sold: <input type="text" value="420" readonly></label>
+            <div class="actions bottom">
+              <button class="minus"><i class="fi fi-sr-minus-circle"></i></button>
+            </div>
+          </div>
+          <div class="card">
+            <label>Name: <input type="text" value="Food Carnival" readonly></label>
+            <label>Location: <input type="text" value="Miami" readonly></label>
+            <label>Tickets Available: <input type="text" value="200" readonly></label>
+            <label>Tickets Sold: <input type="text" value="300" readonly></label>
+            <div class="actions bottom">
+              <button class="minus"><i class="fi fi-sr-minus-circle"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="column pending">
+          <h2>Pending Events</h2>
+          <div class="card">
+            <label>Name: <input type="text" value="Startup Fair" readonly></label>
+            <label>Location: <input type="text" value="Boston" readonly></label>
+            <label>Tickets Available: <input type="text" value="100" readonly></label>
+            <label>Tickets Sold: <input type="text" value="0" readonly></label>
+            <div class="actions bottom">
+              <button class="plus"><i class="fi fi-sr-add"></i></button>
+              <button class="minus"><i class="fi fi-sr-minus-circle"></i></button>
+            </div>
+          </div>
+          <div class="card">
+            <label>Name: <input type="text" value="Gaming Fest" readonly></label>
+            <label>Location: <input type="text" value="Seattle" readonly></label>
+            <label>Tickets Available: <input type="text" value="120" readonly></label>
+            <label>Tickets Sold: <input type="text" value="0" readonly></label>
+            <div class="actions bottom">
+              <button class="plus"><i class="fi fi-sr-add"></i></button>
+              <button class="minus"><i class="fi fi-sr-minus-circle"></i></button>
+            </div>
+          </div>
+          <div class="card">
+            <label>Name: <input type="text" value="Music Bash" readonly></label>
+            <label>Location: <input type="text" value="Austin" readonly></label>
+            <label>Tickets Available: <input type="text" value="140" readonly></label>
+            <label>Tickets Sold: <input type="text" value="0" readonly></label>
+            <div class="actions bottom">
+              <button class="plus"><i class="fi fi-sr-add"></i></button>
+              <button class="minus"><i class="fi fi-sr-minus-circle"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>

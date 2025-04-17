@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>EventHive - Where Moments Become Memories</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="home_page.css" />
+
+    </head>
+    <body>
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header" onclick="toggleSidebar()">
+            <!--  All the logos from sidebar              -->
+            <!-- REPLACE WITH LOGO FROM SERGIU -->
+                <div class="logo-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h1>EventHive</h1>
+            </div>
+
+            <div class="nav-menu">
+                <a href="home_page.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span class="nav-text">Home</span>
+                </a>
+
+<!--//Current events page = Home page ?-->
+
+<!--                <a href="login.html" class="nav-item">-->
+<!--                   <i class="fas fa-fire"></i>-->
+<!--                   <span class="nav-text">Current Events</span>-->
+<!--               </a>-->
+
+<!--                <a href="#" class="nav-item">-->
+<!--                    <i class="fas fa-search"></i>-->
+<!--                    <span class="nav-text">Browse Events</span>-->
+<!--                </a>-->
+                <a href="login.html" class="nav-item">
+                    <i class="fas fa-ticket-alt"></i>
+                    <span class="nav-text">My Tickets</span>
+                </a>
+                <a href="login.html" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span class="nav-text">Account</span>
+                </a>
+                <a href="login.html" class="nav-item">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span class="nav-text">Login</span>
+                </a>
+<!--                <a href="#" class="nav-item">-->
+<!--                    <i class="fas fa-user-plus"></i>-->
+<!--                    <span class="nav-text">Sign Up</span>-->
+<!--                </a>-->
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header Section -->
+            <section class="header">
+                <h2>Moto Moto like disco</h2>
+<!--                INTREABA PENTRU MOTTO?    -->
+                <p>Discover unforgettable experiences, connect with your passions, and collect moments that last a lifetime. Your next adventure starts here.</p>
+                <a href="login.html" class="btn">Explore Events</a>
+            </section>
+
+            <!-- Current Events -->
+            <section class="section">
+                <h2 class="section-title">Current Events</h2>
+                <div class="events-container">
+                    <div class="event-card">
+                        <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                        <div class="event-details">
+                            <h3>Summer Music Festival</h3>
+                            <div class="event-meta">
+                                <p><i class="fas fa-map-marker-alt"></i> Center, Cluj-Napoca</p>
+                                <p><i class="fas fa-calendar-alt"></i> June 10-12, 2025</p>
+                                <p><i class="fas fa-ticket-alt"></i> Tickets Available: 142/500</p>
+                            </div>
+                            <a href="login.html" class="btn">Get Tickets</a>
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                        <div class="event-details">
+                            <h3>Tech Innovators Summit</h3>
+                            <div class="event-meta">
+                                <p><i class="fas fa-map-marker-alt"></i> Piata Unirii, Cluj-Napoca</p>
+                                <p><i class="fas fa-calendar-alt"></i> August 5-7, 2025</p>
+                                <p><i class="fas fa-ticket-alt"></i> Tickets Available: 32/300</p>
+                            </div>
+                            <a href="login.html" class="btn">Get Tickets</a>
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                        <div class="event-details">
+                            <h3>Food & Wine Experience</h3>
+                            <div class="event-meta">
+                                <p><i class="fas fa-map-marker-alt"></i> Art Museum, Cluj-Napoca</p>
+                                <p><i class="fas fa-calendar-alt"></i> August 20, 2025</p>
+                                <p><i class="fas fa-ticket-alt"></i> Tickets Available: 87/100</p>
+                            </div>
+                            <a href="login.html" class="btn">Get Tickets</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Upcoming Events -->
+            <section class="section" style="background-color: #f5f5f5;">
+                <h2 class="section-title">Upcoming Events</h2>
+                <div class="events-container">
+                    <div class="event-card">
+                        <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                        <div class="event-details">
+                            <h3>Jazz Under the Stars</h3>
+                            <div class="event-meta">
+                                <p><i class="fas fa-map-marker-alt"></i> Parcul Etnografic, Cluj-Napoca</p>
+                                <p><i class="fas fa-calendar-alt"></i> June 15-18, 2025</p>
+                                <p><i class="fas fa-ticket-alt"></i> Tickets Available: 150</p>
+                            </div>
+                            <a href="login.html" class="btn">Get Tickets</a>
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                        <div class="event-details">
+                            <h3>Indie Film Festival</h3>
+                            <div class="event-meta">
+                                <p><i class="fas fa-map-marker-alt"></i> Teatrul National, Cluj-Napoca</p>
+                                <p><i class="fas fa-calendar-alt"></i> July 8-10, 2025</p>
+                                <p><i class="fas fa-ticket-alt"></i> Tickets Available: 100</p>
+                            </div>
+                            <a href="login.html" class="btn">Get Tickets</a>
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                        <div class="event-details">
+                            <h3>Comedy Night Out</h3>
+                            <div class="event-meta">
+                                <p><i class="fas fa-map-marker-alt"></i> Strada Ioan Ratiu, Cluj-Napoca</p>
+                                <p><i class="fas fa-calendar-alt"></i> September 5, 2025</p>
+                                <p><i class="fas fa-ticket-alt"></i> Tickets Available: 80</p>
+                            </div>
+                            <a href="login.html" class="btn">Get Tickets</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why Choose Us -->
+            <section class="features">
+                <h2 class="section-title" style="color: white;">Why Choose EventHive?</h2>
+                <div class="features-container">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Instant Access</h3>
+                        <p>Get your tickets immediately after purchase with our digital delivery system.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Secure Booking</h3>
+                        <p>Your transactions are protected with industry-leading security measures.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Curated Selection</h3>
+                        <p>We handpick events to ensure quality experiences for our community.</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer>
+                <div class="footer-links">
+                    <a href="#">About Us</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Careers</a>
+                </div>
+
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+
+                <p>&copy; 2025 EventHive. All rights reserved. "Where Moments Become Memories"</p>
+            </footer>
+        </div>
+
+        <script>
+            function toggleSidebar() {
+                const sidebar = document.getElementById('sidebar');
+                sidebar.classList.toggle('expanded');
+
+            }
+
+            document.addEventListener('click', function(event) {
+                const sidebar = document.getElementById('sidebar');
+                const isClickInside = sidebar.contains(event.target);
+
+                if (!isClickInside && sidebar.classList.contains('expanded') && window.innerWidth > 768) {
+                    sidebar.classList.remove('expanded');
+                }
+            });
+
+        </script>
+
+    </body>
+</html>
