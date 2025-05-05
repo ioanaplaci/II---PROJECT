@@ -1,0 +1,103 @@
+/* Applications Container */
+.applications-container {
+    padding: 20px;
+    display: grid;
+    gap: 20px;
+}
+
+.application-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.application-card:hover {
+    transform: translateY(-3px);
+}
+
+.btn-view {
+    background: var(--lavender);
+    color: var(--navy);
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.application-modal {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+.application-content {
+    background: var(--cream);
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 15px;
+}
+
+.btn-close {
+    background: none;
+    color: var(--slate);
+    font-size: 1.5rem;
+    padding: 0;
+    line-height: 1;
+}
+
+/* Updated CSS */
+.applicant-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.application-content h4 {
+    color: var(--navy);
+    margin-bottom: 10px;
+}
+
+.modal-body p {
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+#applicantExperience,
+#applicantWhyJoin {
+    background: var(--cream);
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 8px;
+}

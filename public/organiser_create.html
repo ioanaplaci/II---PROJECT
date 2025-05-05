@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventHive - Organizer Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="home_page.css">
+    <link rel="stylesheet" href="admin_user_management.css">
+    <link rel="stylesheet" href="organiser_create.css">
+    <link rel="icon" type="image/png" href="Logo.png">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header" onclick="toggleSidebar()">
+            <div class="logo-icon">
+                <img src="Logo.png" alt="EventHive Logo" class="logo-img">
+            </div>
+            <h1>EventHive</h1>
+        </div>
+
+        <div class="nav-menu">
+            <a href="organiser_create.html" class="nav-item active">
+                <i class="fas fa-plus-circle"></i>
+                <span class="nav-text">Create New Event</span>
+            </a>
+            <a href="organiser_myevents.html" class="nav-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span class="nav-text">My Events</span>
+            </a>
+            <a href="home_page.html" class="nav-item">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="nav-text">Sign Out</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header class="admin-header"
+            style="background: linear-gradient(rgba(22, 27, 51, 0.9), rgba(22, 27, 51, 0.9)), url('https://plus.unsplash.com/premium_photo-1661284892176-fd7713b764a6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+            <div class="admin-header-content">
+                <h2>Create New Event</h2>
+            </div>
+        </header>
+
+        <section class="section">
+            <div class="event-form-container">
+                <form id="eventForm" class="event-form">
+                    <div class="form-grid">
+                        <!-- Add image upload field at the top -->
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label for="eventImage">Event Image *</label>
+                            <input type="file" id="eventImage" name="eventImage" accept="image/*" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventName">Event Name *</label>
+                            <input type="text" id="eventName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventLocation">Location *</label>
+                            <input type="text" id="eventLocation" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventDateTime">Date & Time *</label>
+                            <input type="datetime-local" id="eventDateTime" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventArtist">Featured Artist(s)</label>
+                            <input type="text" id="eventArtist">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventAge">Age Requirement *</label>
+                            <select id="eventAge" required>
+                                <option value="all">All Ages</option>
+                                <option value="18">18+</option>
+                                <option value="21">21+</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventTheme">Event Theme</label>
+                            <input type="text" id="eventTheme">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventTickets">Tickets Available *</label>
+                            <input type="number" id="eventTickets" min="1" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="organizerName">Organiser Name *</label>
+                            <input type="text" id="organizerName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-paper-plane"></i> Publish Event
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-links">
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Careers</a>
+            </div>
+
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+
+            <p>&copy; 2025 EventHive. All rights reserved. "Where Moments Become Memories"</p>
+        </footer>
+    </div>
+
+    <script>
+        // Form Validation
+        document.getElementById('eventForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Add validation logic here
+            alert('Event submitted successfully!');
+            this.reset();
+        });
+
+        // Sidebar Toggle
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('expanded');
+        }
+
+        document.addEventListener('click', function (event) {
+            const sidebar = document.getElementById('sidebar');
+            const isClickInside = sidebar.contains(event.target);
+
+            if (!isClickInside && sidebar.classList.contains('expanded') && window.innerWidth > 768) {
+                sidebar.classList.remove('expanded');
+            }
+        });
+    </script>
+</body>
+
+</html>

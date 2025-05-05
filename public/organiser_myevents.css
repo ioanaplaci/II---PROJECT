@@ -1,0 +1,58 @@
+/* Event Status Styles */
+.event-status {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.event-status.upcoming {
+    background: var(--gold);
+    color: var(--navy);
+}
+
+.event-status.ongoing {
+    background: #4CAF50;
+    color: white;
+}
+
+.event-status.sold-out {
+    background: #f44336;
+    color: white;
+}
+
+.event-status.cancelled {
+    background: #9E9E9E;
+    color: white;
+}
+
+.event-status.past {
+    background: #607D8B;
+    color: white;
+}
+
+.event-info {
+    position: relative;
+    width: 100%;
+}
+
+.event-info h3 {
+    margin-right: 100px;
+}
+
+.event-info p {
+    margin: 8px 0;
+    color: var(--slate);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Adjust user-card padding for events */
+.user-card.event-card {
+    padding: 20px;
+    position: relative;
+}

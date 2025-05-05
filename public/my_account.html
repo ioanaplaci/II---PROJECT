@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Account | EventHive</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="my_account.css">
+        <link rel="icon" type="image/png" href="Logo.png">
+    </head>
+    <body>
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header" onclick="toggleSidebar()">
+                <!--  All the logos from sidebar              -->
+                <div class="logo-icon">
+                    <img src="Logo.png" alt="EventHive Logo" class="logo-img">
+                </div>
+                <h1>EventHive</h1>
+            </div>
+
+            <div class="nav-menu">
+                <a href="client_home_page.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span class="nav-text">Home</span>
+                </a>
+                <a href="my_tickets.html" class="nav-item">
+                    <i class="fas fa-ticket-alt"></i>
+                    <span class="nav-text">My Tickets</span>
+                </a>
+                <a href="my_account.html" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span class="nav-text">Account</span>
+                </a>
+                <a href="home_page.html" class="nav-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="nav-text">Logout</span>
+                </a>
+            </div>
+        </div>
+        <div class="main-content">
+            <!-- Header Section -->
+            <section class="header" style="background-image: linear-gradient(rgba(22, 27, 51, 0.8), rgba(22, 27, 51, 0.8)), url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                <h2>My Account</h2>
+                <p>Manage your personal information and preferences</p>
+            </section>
+
+            <!-- Account Section -->
+            <section class="section">
+                <div class="account-container">
+                    <div class="account-sidebar">
+                        <div class="account-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <nav class="account-menu">
+                            <a href="#" class="active">Profile</a>
+                        </nav>
+                    </div>
+
+                    <div class="account-content">
+                        <h3>Personal Information</h3>
+                        <form class="account-form">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" value="John Doe" class="form-control" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" value="john.doe@example.com" class="form-control" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel" value="+40 712 345 678" class="form-control" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Age</label>
+                                <input type="text" value="34" class="form-control" readonly>
+                            </div>
+                        </form>
+
+                        <div class="account-actions">
+                            <h3>Account Actions</h3>
+                            <button class="btn change-password">Change Password</button>
+                            <button class="btn delete-account">Delete Account</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer>
+                <div class="footer-links">
+                    <a href="#">About Us</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Careers</a>
+                </div>
+
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+
+                <p>&copy; 2025 EventHive. All rights reserved. "Where Moments Become Memories"</p>
+            </footer>
+        </div>
+        <script>
+            // Sidebar
+            function toggleSidebar() {
+                const sidebar = document.getElementById('sidebar');
+                sidebar.classList.toggle('expanded');
+            }
+
+            document.addEventListener('click', function(event) {
+                const sidebar = document.getElementById('sidebar');
+                const isClickInside = sidebar.contains(event.target);
+
+                if (!isClickInside && sidebar.classList.contains('expanded') && window.innerWidth > 768) {
+                    sidebar.classList.remove('expanded');
+                }
+            });
+
+        </script>
+    </body>
+</html>

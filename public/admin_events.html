@@ -1,113 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EventHive - Admin Page</title>
-  <link rel="stylesheet" href="admin_events.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css">
-  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventHive - Admin Events Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="home_page.css">
+    <link rel="stylesheet" href="admin_events.css">
+    <link rel="icon" type="image/png" href="Logo.png">
 </head>
-
 <body>
-  <div class="container">
-    <div class="sidebar">
-      <div class="logo">
-        <img src="Logo.png" alt="Logo" class="logo-img">
-        <h2>EventHive</h2>
-      </div>
-      <nav>
-        <ul>
-          <li><button><i class="fi fi-sr-calendar-star"></i> Events</button></li>
-          <li><button><i class="fi fi-sr-users-alt"></i> Users</button></li>
-          <li><button><i class="fi fi-br-chat-arrow-grow"></i> Analytics</button></li>
-        </ul>
-      </nav>
-      <div class="logout">
-       <ul><button><i class="fi fi-br-exit"></i> Logout</button> </ul>
-      </div>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header" onclick="toggleSidebar()">
+          <div class="logo-icon">
+            <img src="Logo.png" alt="EventHive Logo" class="logo-img">
+        </div>
+            <h1>EventHive</h1>
+        </div>
+
+        <div class="nav-menu">
+            <a href="admin_events.html" class="nav-item active">
+                <i class="fas fa-calendar-check"></i>
+                <span class="nav-text">Events</span>
+            </a>
+            <a href="admin_user_management.html" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span class="nav-text">Users</span>
+            </a>
+            <a href="admin_inbox.html" class="nav-item">
+                <i class="fas fa-envelope-open"></i>
+                <span class="nav-text">Inbox</span>
+            </a>
+            <a href="home_page.html" class="nav-item">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="nav-text">Logout</span>
+            </a>
+        </div>
     </div>
 
-    <main>
-      <header>
-        <h1>Events</h1>
-        <div class="user-icon">
-          <i class="fi fi-sr-user"></i>
-        </div>
-      </header>
+    <!-- Main Content -->
+    <div class="main-content">
+        <header class="admin-header" style="background: linear-gradient(rgba(22, 27, 51, 0.9), rgba(22, 27, 51, 0.9)), url('https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+            <div class="admin-header-content">
+                <h2>Event Management Dashboard</h2>
+                <div class="admin-stats">
+                    <div class="stat">
+                        <i class="fas fa-calendar-check"></i>
+                        <div>
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Active Events</span>
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <span class="stat-number">4</span>
+                            <span class="stat-label">Pending Events</span>
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-ticket-alt"></i>
+                        <div>
+                            <span class="stat-number">12,420</span>
+                            <span class="stat-label">Tickets Sold</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-      <div class="events-columns">
-        <div class="column">
-          <h2>Active Events</h2>
-          <div class="card">
-            <label>Name: <input type="text" value="Summer Festival" readonly></label>
-            <label>Location: <input type="text" value="New York" readonly></label>
-            <label>Tickets Available: <input type="text" value="150" readonly></label>
-            <label>Tickets Sold: <input type="text" value="350" readonly></label>
-            <div class="actions bottom">
-              <button class="minus"><i class="fi fi-sr-minus-circle"></i></button>
-            </div>
-          </div>
-          <div class="card">
-            <label>Name: <input type="text" value="Tech Expo" readonly></label>
-            <label>Location: <input type="text" value="San Francisco" readonly></label>
-            <label>Tickets Available: <input type="text" value="80" readonly></label>
-            <label>Tickets Sold: <input type="text" value="420" readonly></label>
-            <div class="actions bottom">
-              <button class="minus"><i class="fi fi-sr-minus-circle"></i></button>
-            </div>
-          </div>
-          <div class="card">
-            <label>Name: <input type="text" value="Food Carnival" readonly></label>
-            <label>Location: <input type="text" value="Miami" readonly></label>
-            <label>Tickets Available: <input type="text" value="200" readonly></label>
-            <label>Tickets Sold: <input type="text" value="300" readonly></label>
-            <div class="actions bottom">
-              <button class="minus"><i class="fi fi-sr-minus-circle"></i></button>
-            </div>
-          </div>
+        <!-- Active Events Column -->
+    <div class="admin-column">
+        <h2 class="section-title"><i class="fas fa-calendar-check"></i> Active Events</h2>
+        <div id="activeEventsContainer"></div>
+    </div>
+
+    <!-- Pending Events Column -->
+    <div class="admin-column pending">
+        <h2 class="section-title"><i class="fas fa-clock"></i> Pending Events</h2>
+        <div id="pendingEventsContainer"></div>
+    </div>
+
+
+
+
+        <!-- Footer -->
+        <footer>
+          <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Careers</a>
         </div>
 
-        <div class="column pending">
-          <h2>Pending Events</h2>
-          <div class="card">
-            <label>Name: <input type="text" value="Startup Fair" readonly></label>
-            <label>Location: <input type="text" value="Boston" readonly></label>
-            <label>Tickets Available: <input type="text" value="100" readonly></label>
-            <label>Tickets Sold: <input type="text" value="0" readonly></label>
-            <div class="actions bottom">
-              <button class="plus"><i class="fi fi-sr-add"></i></button>
-              <button class="minus"><i class="fi fi-sr-minus-circle"></i></button>
-            </div>
-          </div>
-          <div class="card">
-            <label>Name: <input type="text" value="Gaming Fest" readonly></label>
-            <label>Location: <input type="text" value="Seattle" readonly></label>
-            <label>Tickets Available: <input type="text" value="120" readonly></label>
-            <label>Tickets Sold: <input type="text" value="0" readonly></label>
-            <div class="actions bottom">
-              <button class="plus"><i class="fi fi-sr-add"></i></button>
-              <button class="minus"><i class="fi fi-sr-minus-circle"></i></button>
-            </div>
-          </div>
-          <div class="card">
-            <label>Name: <input type="text" value="Music Bash" readonly></label>
-            <label>Location: <input type="text" value="Austin" readonly></label>
-            <label>Tickets Available: <input type="text" value="140" readonly></label>
-            <label>Tickets Sold: <input type="text" value="0" readonly></label>
-            <div class="actions bottom">
-              <button class="plus"><i class="fi fi-sr-add"></i></button>
-              <button class="minus"><i class="fi fi-sr-minus-circle"></i></button>
-            </div>
-          </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
         </div>
-      </div>
-    </main>
-  </div>
+
+        <p>&copy; 2025 EventHive. All rights reserved. "Where Moments Become Memories"</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('expanded');
+        }
+
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const isClickInside = sidebar.contains(event.target);
+
+            if (!isClickInside && sidebar.classList.contains('expanded') && window.innerWidth > 768) {
+                sidebar.classList.remove('expanded');
+            }
+        });
+    </script>
+
+
+    <script>
+        // Load admin events on page load
+        window.addEventListener('DOMContentLoaded', loadAdminEvents);
+        
+        async function loadAdminEvents() {
+            const res = await fetch('/admin-events');
+            const events = await res.json();
+        
+            const activeColumn = document.querySelector('.admin-column:not(.pending)');
+            const pendingColumn = document.querySelector('.admin-column.pending');
+        
+            activeColumn.innerHTML = '<h2 class="section-title"><i class="fas fa-calendar-check"></i> Active Events</h2>';
+            pendingColumn.innerHTML = '<h2 class="section-title"><i class="fas fa-clock"></i> Pending Events</h2>';
+        
+            events.forEach(event => {
+                const card = document.createElement('div');
+                card.className = 'admin-card' + (event.status === 'pending' ? ' pending' : '');
+        
+                card.innerHTML = `
+                    <div class="event-meta">
+                        <p><strong>${event.name}</strong></p>
+                        <p><i class="fas fa-map-marker-alt"></i> ${event.address}</p>
+                        <p><i class="fas fa-calendar-alt"></i> ${new Date(event.date).toLocaleDateString()}</p>
+                        <p><i class="fas fa-ticket-alt"></i> Available: ${event.nr_of_tickets}</p>
+                        ${event.status === 'pending' ? '<p><i class="fas fa-clock"></i> Pending Approval</p>' : ''}
+                    </div>
+                    <div class="admin-actions">
+                        ${
+                            event.status === 'pending'
+                            ? `
+                                <button class="btn btn-success" onclick="approveEvent(${event.EventID})"><i class="fas fa-check"></i> Approve</button>
+                                <button class="btn btn-danger" onclick="deleteEvent(${event.EventID})"><i class="fas fa-times"></i> Reject</button>
+                            `
+                            : `
+                                <button class="btn btn-danger" onclick="deleteEvent(${event.EventID})"><i class="fas fa-trash"></i> Delete</button>
+                            `
+                        }
+                    </div>
+                `;
+        
+                if (event.status === 'pending') {
+                    pendingColumn.appendChild(card);
+                } else {
+                    activeColumn.appendChild(card);
+                }
+            });
+        }
+        
+        async function approveEvent(eventId) {
+            const res = await fetch('/approve-event', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ eventId })
+            });
+            const data = await res.json();
+            if (data.success) {
+                alert('Event approved!');
+                loadAdminEvents();
+            }
+        }
+        
+        async function deleteEvent(eventId) {
+            const res = await fetch('/delete-event', {
+                method: 'DELETE',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ eventId })
+            });
+            const data = await res.json();
+            if (data.success) {
+                alert('Event deleted!');
+                loadAdminEvents();
+            }
+        }
+    </script>
+    
+
+    <script>
+        async function loadEventsForAdmin() {
+            try {
+                const res = await fetch('/all-events');
+                const events = await res.json();
+    
+                const activeContainer = document.getElementById('activeEventsContainer');
+                const pendingContainer = document.getElementById('pendingEventsContainer');
+    
+                events.forEach(event => {
+                    const card = document.createElement('div');
+                    card.classList.add('admin-card');
+                    if (event.status.toLowerCase() === 'pending') card.classList.add('pending');
+    
+                    card.innerHTML = `
+                        <div class="event-meta">
+                            <p><strong>${event.name}</strong></p>
+                            <p><i class="fas fa-map-marker-alt"></i> ${event.address}</p>
+                            <p><i class="fas fa-calendar-alt"></i> ${new Date(event.date).toLocaleDateString()}</p>
+                            <p><i class="fas fa-ticket-alt"></i> Available: ${event.nr_of_tickets}</p>
+                            <p><i class="fas fa-${event.status === 'pending' ? 'clock' : 'check-circle'}"></i> ${event.status === 'pending' ? 'Pending Approval' : 'Active'}</p>
+                        </div>
+                        <div class="admin-actions">
+                            ${event.status === 'pending' ? `
+                                <button class="btn btn-success" onclick="updateStatus('${event.name}', 'active')"><i class="fas fa-check"></i> Approve</button>
+                                <button class="btn btn-danger" onclick="deleteEvent('${event.name}')"><i class="fas fa-times"></i> Reject</button>
+                            ` : `
+                                <button class="btn btn-danger" onclick="deleteEvent(${event.EventID})"><i class="fas fa-trash"></i> Delete</button>
+                            `}
+                        </div>
+                    `;
+    
+                    if (event.status.toLowerCase() === 'pending') {
+                        pendingContainer.appendChild(card);
+                    } else {
+                        activeContainer.appendChild(card);
+                    }
+                });
+            } catch (err) {
+                console.error('Failed to load events:', err);
+            }
+        }
+    
+        async function updateStatus(eventName, newStatus) {
+            await fetch('/update-event-status', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: eventName, status: newStatus })
+            });
+            location.reload();
+        }
+    
+        async function deleteEvent(eventId) {
+            const res = await fetch('/delete-event', {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ eventId })
+            });
+            const data = await res.json();
+            if (data.success) {
+                alert('Event deleted!');
+                loadAdminEvents();
+            }
+        }
+
+
+        window.addEventListener('DOMContentLoaded', loadEventsForAdmin);
+    </script>
+    
 </body>
-
 </html>

@@ -1,0 +1,199 @@
+:root {
+    --navy: #161B33;
+    --slate: #474973;
+    --gold: #F4D35E;
+    --dark_gold: #D4AF37;
+    --lavender: #A69CAC;
+    --black: #0D0C1D;
+    --cream: #F7F7F2;
+    --light_gold: #F8E5A1;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--black);
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+    margin: 0;
+    color: var(--navy);
+}
+
+/* Main Content */
+.main-content {
+    position: relative;
+    background-color: var(--cream);
+    background-image:
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='104' viewBox='0 0 120 104'%3E%3Cpolygon points='30,2 90,2 118,52 90,102 30,102 2,52' fill='none' stroke='rgba(166,156,172,0.3)' stroke-width='4'/%3E%3C/svg%3E"),
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='104' viewBox='0 0 120 104'%3E%3Cpolygon points='30,2 90,2 118,52 90,102 30,102 2,52' fill='none' stroke='rgba(166,156,172,0.3)' stroke-width='4'/%3E%3C/svg%3E");
+    background-size: 190px 114px;
+    background-position:
+            10px 100px,
+            675px 160px;
+    background-repeat: repeat;
+    z-index: 1;
+}
+
+/* Header Section */
+.header {
+    background: linear-gradient(rgba(22, 27, 51, 0.8), rgba(22, 27, 51, 0.8)),
+    url('https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.header h2 {
+    color: var(--gold);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.header p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+}
+
+/* Section Styles */
+.section {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.section-title:after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--gold);
+    margin: 15px auto;
+}
+
+/* Form Styles */
+.application-form {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--navy);
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 0.01px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+textarea.form-control {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.form-note {
+    font-size: 0.9rem;
+    color: var(--slate);
+    margin-top: 5px;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--gold);
+    color: var(--black);
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #e6c84d;
+    transform: translateY(-2px);
+}
+
+.submit-btn {
+    background-color: var(--gold);
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow:
+            0 10px 30px rgba(233, 189, 71, 0.3), /* Original shadow */
+            3px 3px 0 rgba(233, 189, 71, 0.9); /* 3D offset shadow */
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--black);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: var(--lavender);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.social-icons {
+    margin: 20px 0;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--gold);
+}
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Become an Organiser | EventHive</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="organiser_application.css">
+        <link rel="icon" type="image/png" href="Logo.png">
+    </head>
+    <body>
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header Section -->
+            <section class="header" style="background-image: linear-gradient(rgba(22, 27, 51, 0.8), rgba(22, 27, 51, 0.8)), url('https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                <h2>Become an EventHive Organiser</h2>
+                <p>Join our network of trusted event organisers and bring your events to our passionate community.</p>
+            </section>
+
+            <!-- Application Form -->
+            <section class="section">
+                <div class="application-form">
+                    <h2 class="section-title">Application</h2>
+
+                    <form id="organiserApplication">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="organization">Organisation (if applicable)</label>
+                            <input type="text" id="organization" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="experience">Event Organising Experience</label>
+                            <textarea id="experience" class="form-control" required></textarea>
+                            <p class="form-note">Please describe your previous experience organizing events</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="why">Why Do You Want to Join EventHive?</label>
+                            <textarea id="why" class="form-control" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" required> I agree to the Terms and Conditions
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn submit-btn">Submit Application</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer>
+                <div class="footer-links">
+                    <a href="#">About Us</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Careers</a>
+                </div>
+
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+
+                <p>&copy; 2025 EventHive. All rights reserved. "Where Moments Become Memories"</p>
+            </footer>
+        </div>
+    </body>
+</html>
