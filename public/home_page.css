@@ -94,6 +94,36 @@ h1, h2, h3 {
     display: block;
 }
 
+/* Sidebar hover */
+.sidebar {
+    transition: width 0.3s ease;
+}
+
+.sidebar:hover {
+    width: 250px;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+}
+
+.sidebar:hover .sidebar-header h1 {
+    display: block;
+}
+
+.sidebar:hover .nav-text {
+    display: inline-block;
+}
+
+.sidebar:hover ~ .main-content {
+    margin-left: 250px;
+}
+
+.sidebar:hover::before {
+    opacity: 0.05;
+}
+
+.nav-item:hover {
+    pointer-events: auto;
+}
+
 /* Logo Design */
 .logo-img {
     display: flex;

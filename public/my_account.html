@@ -6,12 +6,13 @@
         <title>My Account | EventHive</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel="stylesheet" href="my_account.css">
+        <link rel="stylesheet" href="client_home_page.css">
         <link rel="icon" type="image/png" href="Logo.png">
     </head>
     <body>
         <!-- Sidebar -->
         <div class="sidebar" id="sidebar">
-            <div class="sidebar-header" onclick="toggleSidebar()">
+            <div class="sidebar-header">
                 <!--  All the logos from sidebar              -->
                 <div class="logo-icon">
                     <img src="Logo.png" alt="EventHive Logo" class="logo-img">
@@ -107,22 +108,5 @@
                 <p>&copy; 2025 EventHive. All rights reserved. "Where Moments Become Memories"</p>
             </footer>
         </div>
-        <script>
-            // Sidebar
-            function toggleSidebar() {
-                const sidebar = document.getElementById('sidebar');
-                sidebar.classList.toggle('expanded');
-            }
-
-            document.addEventListener('click', function(event) {
-                const sidebar = document.getElementById('sidebar');
-                const isClickInside = sidebar.contains(event.target);
-
-                if (!isClickInside && sidebar.classList.contains('expanded') && window.innerWidth > 768) {
-                    sidebar.classList.remove('expanded');
-                }
-            });
-
-        </script>
     </body>
 </html>

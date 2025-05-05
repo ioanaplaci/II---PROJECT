@@ -12,7 +12,7 @@
 <body>
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
-        <div class="sidebar-header" onclick="toggleSidebar()">
+        <div class="sidebar-header">
           <div class="logo-icon">
             <img src="Logo.png" alt="EventHive Logo" class="logo-img">
         </div>
@@ -82,9 +82,6 @@
         <div id="pendingEventsContainer"></div>
     </div>
 
-
-
-
         <!-- Footer -->
         <footer>
           <div class="footer-links">
@@ -105,23 +102,6 @@
         <p>&copy; 2025 EventHive. All rights reserved. "Where Moments Become Memories"</p>
         </footer>
     </div>
-
-    <script>
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('expanded');
-        }
-
-        document.addEventListener('click', function(event) {
-            const sidebar = document.getElementById('sidebar');
-            const isClickInside = sidebar.contains(event.target);
-
-            if (!isClickInside && sidebar.classList.contains('expanded') && window.innerWidth > 768) {
-                sidebar.classList.remove('expanded');
-            }
-        });
-    </script>
-
 
     <script>
         // Load admin events on page load

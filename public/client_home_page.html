@@ -12,7 +12,7 @@
     <body>
         <!-- Sidebar -->
         <div class="sidebar" id="sidebar">
-            <div class="sidebar-header" onclick="toggleSidebar()">
+            <div class="sidebar-header">
                 <!--  All the logos from sidebar              -->
                 <div class="logo-icon">
                     <img src="Logo.png" alt="EventHive Logo" class="logo-img">
@@ -202,18 +202,19 @@
 
         <!-- Javascript -->
         <script>
-            function toggleSidebar() {
-                const sidebar = document.getElementById('sidebar');
-                sidebar.classList.toggle('expanded');
-            }
+            const sidebar = document.getElementById('sidebar');
+            let hoverTimer;
 
-            document.addEventListener('click', function(event) {
-                const sidebar = document.getElementById('sidebar');
-                const isClickInside = sidebar.contains(event.target);
+            // Add hover behavior
+            sidebar.addEventListener('mouseenter', () => {
+                hoverTimer = setTimeout(() => {
+                    sidebar.classList.add('expanded');
+                }, 100); // 100ms delay for smoother UX
+            });
 
-                if (!isClickInside && sidebar.classList.contains('expanded') && window.innerWidth > 768) {
-                    sidebar.classList.remove('expanded');
-                }
+            sidebar.addEventListener('mouseleave', () => {
+                clearTimeout(hoverTimer);
+                sidebar.classList.remove('expanded');
             });
 
             // Ticket Modal functionality
