@@ -53,10 +53,10 @@
                     <div class="form-grid">
                         <!-- Add image upload field at the top -->
                         <div class="form-group" style="grid-column: 1 / -1;">
-                            <label for="eventImage">Event Image *</label>
-                            <input type="file" id="eventImage" name="eventImage" accept="image/*" required>
+                            <label for="eventImageUrl">Event Image URL *</label>
+                            <input type="url" id="eventImageUrl" name="eventImageUrl" placeholder="https://..." required>
                         </div>
-
+                        
                         <div class="form-group">
                             <label for="eventName">Event Name *</label>
                             <input type="text" id="eventName" required>
@@ -73,7 +73,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="eventArtist">Featured Artist(s)</label>
+                            <label for="eventArtist">Featured Artist(s) *</label>
                             <input type="text" id="eventArtist">
                         </div>
 
@@ -88,7 +88,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="eventTheme">Event Theme</label>
+                            <label for="eventTheme">Event Theme *</label>
                             <input type="text" id="eventTheme">
                         </div>
 
@@ -97,16 +97,10 @@
                             <input type="number" id="eventTickets" min="1" required>
                         </div>
 
-                        <div class="form-group">
-                            <label for="organizerName">Organiser Name *</label>
-                            <input type="text" id="organizerName" required>
-                        </div>
-                    </div>
-
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-success">
-                            <i class="fas fa-paper-plane"></i> Publish Event
-                        </button>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-paper-plane"></i> Publish Event
+                            </button>
                     </div>
                 </form>
             </div>
@@ -134,17 +128,7 @@
     </div>
 
     <script>
-        // Form Validation
-        document.getElementById('eventForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // Add validation logic here
-            alert('Event submitted successfully!');
-            this.reset();
-        });
-
         // Sidebar Toggle
-
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             sidebar.classList.toggle('expanded');
@@ -159,6 +143,42 @@
             }
         });
     </script>
-</body>
 
+    
+    <script>// Application form script for events
+        document.getElementById('eventForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('eventName').value;
+            const address = document.getElementById('eventLocation').value;
+            const dateTime = new Date(document.getElementById('eventDateTime').value);
+            const date = dateTime.toISOString().split('T')[0];
+            const time = dateTime.toTimeString().split(' ')[0];
+            const artist = document.getElementById('eventArtist').value || '';
+            const age_requirement = document.getElementById('eventAge').value;
+            const theme = document.getElementById('eventTheme').value || '';
+            const nr_of_tickets = document.getElementById('eventTickets').value;
+            const picture_url = document.getElementById('eventImageUrl').value.trim();
+
+            const res = await fetch('/create-event', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name, address, date, time, artist, age_requirement,
+                    theme, nr_of_tickets, picture_url
+                })
+            });
+
+            const data = await res.json();
+            if (data.success) {
+                alert('Event submitted successfully and is pending approval!');
+                e.target.reset();
+            } else {
+                alert('Failed to create event.');
+            }
+        });
+    </script>
+
+
+</body>
 </html>

@@ -30,6 +30,7 @@ sql.connect(connection2)
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
+
 //initial page
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'home_page.html'));
@@ -208,7 +209,6 @@ app.delete('/delete-event', async (req, res) => {
     }
 });
 
-
 // Update user role
 app.post('/update-role', async (req, res) => {
     const { email, role } = req.body;
@@ -227,7 +227,6 @@ app.post('/update-role', async (req, res) => {
     }
 });
 
-
 // get all users for admin dashboard
 app.get('/users', async (req, res) => {
     try {
@@ -239,7 +238,6 @@ app.get('/users', async (req, res) => {
         res.status(500).send({ success: false });
     }
 });
-
 
 // Get all events
 // Used by client_home_page.html and home_page.html
@@ -259,9 +257,7 @@ app.get('/events', async (req, res) => {
     }
 });
 
-
-
-
+// Get event details by name
 app.post('/update-event-status', async (req, res) => {
     const { name, status } = req.body;
     try {
@@ -292,6 +288,54 @@ app.delete('/delete-event', async (req, res) => {
     }
 });
 
+// Organizer
+// Create event
+app.post('/create-event', async (req, res) => {
+    const {
+        name, address, date, time, artist, age_requirement,
+        theme, nr_of_tickets, picture_url
+    } = req.body;
+
+    const token = req.headers.authorization?.split(' ')[1];
+    if (!token) {
+        return res.status(401).send({ success: false, message: 'Missing token' });
+    }
+
+    try {
+        const decoded = jwt.verify(token, secretKey);
+        const userEmail = decoded.email;
+
+        const request = new sql.Request();
+
+        // Get organizer ID
+        const userResult = await request.query(`
+            SELECT Id FROM Users WHERE Email = '${userEmail}'
+        `);
+
+        if (userResult.recordset.length === 0) {
+            return res.status(404).send({ success: false, message: 'Organizer not found' });
+        }
+
+        const organizerId = userResult.recordset[0].Id;
+
+        // Insert event with OrganizerID (as int)
+        await request.query(`
+            INSERT INTO Event (
+                name, address, date, time, artist, age_requirement,
+                theme, nr_of_tickets, OrganizerID, status, picture_url
+            )
+            VALUES (
+                '${name}', '${address}', '${date}', '${time}', '${artist}', '${age_requirement}',
+                '${theme}', ${nr_of_tickets}, ${organizerId}, 'pending', '${picture_url}'
+            )
+        `);
+
+        res.send({ success: true });
+    } catch (err) {
+        console.error('Error creating event:', err);
+        res.status(500).send({ success: false });
+    }
+});
 
 
 
