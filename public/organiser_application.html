@@ -6,9 +6,45 @@
         <title>Become an Organiser | EventHive</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel="stylesheet" href="organiser_application.css">
+        <link rel="stylesheet" href="client_home_page.css" />
         <link rel="icon" type="image/png" href="Logo.png">
     </head>
     <body>
+
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <!--  All the logos from sidebar              -->
+                <div class="logo-icon">
+                    <img src="Logo.png" alt="EventHive Logo" class="logo-img">
+                </div>
+                <h1>EventHive</h1>
+            </div>
+
+            <div class="nav-menu">
+                <a href="client_home_page.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span class="nav-text">Home</span>
+                </a>
+                <a href="my_tickets.html" class="nav-item">
+                    <i class="fas fa-ticket-alt"></i>
+                    <span class="nav-text">My Tickets</span>
+                </a>
+                <a href="my_account.html" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span class="nav-text">Account</span>
+                </a>
+                <a href="organiser_inbox.html" class="nav-item">
+                    <i class="fas fa-envelope"></i>
+                    <span class="nav-text">Applications</span>
+                </a>
+                <a href="home_page.html" class="nav-item" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="nav-text">Logout</span>
+                </a>
+            </div>
+        </div>
+
         <!-- Main Content -->
         <div class="main-content">
             <!-- Header Section -->
@@ -67,23 +103,11 @@
 
             <!-- Footer -->
             <footer>
-                <div class="footer-links">
-                    <a href="#">About Us</a>
-                    <a href="#">Contact</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Careers</a>
-                </div>
-
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-
                 <p>&copy; 2025 EventHive. All rights reserved. "Where Moments Become Memories"</p>
             </footer>
         </div>
+        <script src="organiser_application.js"></script>
+        <script src="organiser_application_tests.js"></script>
+
     </body>
 </html>

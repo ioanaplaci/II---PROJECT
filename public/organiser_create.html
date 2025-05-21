@@ -31,9 +31,9 @@
                 <i class="fas fa-calendar-alt"></i>
                 <span class="nav-text">My Events</span>
             </a>
-            <a href="home_page.html" class="nav-item">
+            <a href="home_page.html" class="nav-item" id="logoutBtn">
                 <i class="fas fa-sign-out-alt"></i>
-                <span class="nav-text">Sign Out</span>
+                <span class="nav-text">Logout</span>
             </a>
         </div>
     </div>
@@ -49,14 +49,15 @@
 
         <section class="section">
             <div class="event-form-container">
-                <form id="eventForm" class="event-form">
+                <!-- <form id="eventForm" class="event-form"> -->
+                <form id="eventForm">
+
                     <div class="form-grid">
-                        <!-- Add image upload field at the top -->
-                        <div class="form-group" style="grid-column: 1 / -1;">
-                            <label for="eventImageUrl">Event Image URL *</label>
-                            <input type="url" id="eventImageUrl" name="eventImageUrl" placeholder="https://..." required>
-                        </div>
-                        
+                        <!-- Add image upload field at the top 
+                        <label for="eventImage">Event Image *</label>
+                        <input type="file" id="eventImage" accept="image/*" required />
+                        <input type="file" id="eventImage" name="image" accept="image/*" required>-->
+
                         <div class="form-group">
                             <label for="eventName">Event Name *</label>
                             <input type="text" id="eventName" required>
@@ -68,8 +69,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="eventDateTime">Date & Time *</label>
-                            <input type="datetime-local" id="eventDateTime" required>
+                        <label for="eventDate">Event Date *</label>
+                        <input type="date" id="eventDate" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventTime">Event Time *</label>
+                            <input type="time" id="eventTime" required>
                         </div>
 
                         <div class="form-group">
@@ -109,58 +115,15 @@
 
         <!-- Footer -->
         <footer>
-            <div class="footer-links">
-                <a href="#">About Us</a>
-                <a href="#">Contact</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Careers</a>
-            </div>
-
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-
             <p>&copy; 2025 EventHive. All rights reserved. "Where Moments Become Memories"</p>
         </footer>
     </div>
 
-    <script>// Application form script for events
-        document.getElementById('eventForm').addEventListener('submit', async function (e) {
-            e.preventDefault();
+    <script src="organiser_create.js"></script>
+    <script src="organiser_create_tests.js"></script>
 
-            const name = document.getElementById('eventName').value;
-            const address = document.getElementById('eventLocation').value;
-            const dateTime = new Date(document.getElementById('eventDateTime').value);
-            const date = dateTime.toISOString().split('T')[0];
-            const time = dateTime.toTimeString().split(' ')[0];
-            const artist = document.getElementById('eventArtist').value || '';
-            const age_requirement = document.getElementById('eventAge').value;
-            const theme = document.getElementById('eventTheme').value || '';
-            const nr_of_tickets = document.getElementById('eventTickets').value;
-            const picture_url = document.getElementById('eventImageUrl').value.trim();
-
-            const res = await fetch('/create-event', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    name, address, date, time, artist, age_requirement,
-                    theme, nr_of_tickets, picture_url
-                })
-            });
-
-            const data = await res.json();
-            if (data.success) {
-                alert('Event submitted successfully and is pending approval!');
-                e.target.reset();
-            } else {
-                alert('Failed to create event.');
-            }
-        });
-    </script>
+    <script src="logout.js"></script>
+    <div id="notification" class="notification hidden"></div>
 
 
 </body>

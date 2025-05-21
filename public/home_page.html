@@ -44,12 +44,18 @@
             <section class="header">
                 <h2>Moto Moto likes disco</h2>
                 <p>Discover unforgettable experiences, connect with your passions, and collect moments that last a lifetime. Your next adventure starts here.</p>
-                <a href="#current-events" class="btn">Explore Events</a>
+            
             </section>
-
-            <div class="events-container" id="eventsContainer">
-                <!-- Events will be loaded here -->
-            </div>
+        
+                <h2 class="section-title">Featured Events</h2>
+                <div id="eventsContainer" class="events-container"></div>
+<!--            </section>-->
+            <!-- </section>
+            <section class="section">
+                <h2 class="section-title">Featured Events</h2>
+                <div id="macaroane" class="events-grid"></div>
+            </section> -->
+            
 
             <!-- Why Choose Us -->
             <section class="features">
@@ -83,104 +89,13 @@
 
             <!-- Footer -->
             <footer>
-                <div class="footer-links">
-                    <a href="#">About Us</a>
-                    <a href="#">Contact</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Careers</a>
-                </div>
-
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
+                
 
                 <p>&copy; 2025 EventHive. All rights reserved. "Where Moments Become Memories"</p>
             </footer>
         </div>
 
         <!-- Javascript -->
-        <script>
-            const sidebar = document.getElementById('sidebar');
-            let hoverTimer;
-
-            // Add hover behavior
-            sidebar.addEventListener('mouseenter', () => {
-                hoverTimer = setTimeout(() => {
-                    sidebar.classList.add('expanded');
-                }, 100); // 100ms delay for smoother UX
-            });
-
-            sidebar.addEventListener('mouseleave', () => {
-                clearTimeout(hoverTimer);
-                sidebar.classList.remove('expanded');
-            });
-
-        </script>
-        <script>
-            // Load events from the server and display them
-            async function loadEvents() {
-                try {
-                    const res = await fetch('/events');
-                    const events = await res.json();
-
-                    const container = document.getElementById('eventsContainer');
-                    container.innerHTML = '';
-
-                    events.forEach(event => {
-                        const card = document.createElement('div');
-                        card.classList.add('event-card');
-
-                        card.innerHTML = `
-                            <div class="event-image" style="background-image: url('${event.picture_url || 'fallback.jpg'}');"></div>
-                            <div class="event-details">
-                                <h3>${event.name}</h3>
-                                <div class="event-meta">
-                                    <p><i class="fas fa-map-marker-alt"></i> ${event.address}</p>
-                                    <p><i class="fas fa-calendar-alt"></i> ${new Date(event.date).toLocaleDateString('en-GB')} at ${event.time.substring(0,5)}</p>
-                                    <p><i class="fas fa-user-tag"></i> Age requirements: ${event.age_requirement}</p>
-                                    <p><i class="fas fa-users"></i> ${event.artist || 'TBA'}</p>
-                                    <p><i class="fas fa-palette"></i> Theme: ${event.theme || 'General'}</p>
-                                    <p><i class="fas fa-ticket-alt"></i> Tickets Available: ${event.nr_of_tickets}</p>
-                                </div>
-                                <a href="login.html" class="btn">Get Tickets</a>
-                            </div>
-                        `;
-
-                        container.appendChild(card);
-                    });
-                } catch (err) {
-                    console.error('Error loading events:', err);
-                }
-            }
-
-            function formatDateTime(date, time) {
-                try {
-                    if (!date) return 'Date TBD';
-                    const dateObj = new Date(date);
-                    if (time) {
-                        const [hours, minutes] = time.split(':');
-                        dateObj.setHours(+hours);
-                        dateObj.setMinutes(+minutes);
-                    }
-
-                    return dateObj.toLocaleString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        hour12: true
-                    });
-                } catch {
-                    return 'Invalid date';
-                }
-            }
-            window.addEventListener('DOMContentLoaded', loadEvents);
-        </script>
-
+        <script src="home_page.js"></script>
     </body>
 </html>

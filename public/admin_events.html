@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,14 +9,17 @@
     <link rel="stylesheet" href="home_page.css">
     <link rel="stylesheet" href="admin_events.css">
     <link rel="icon" type="image/png" href="Logo.png">
+    <script src="admin_events_tests.js"></script>
+
 </head>
+
 <body>
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-          <div class="logo-icon">
-            <img src="Logo.png" alt="EventHive Logo" class="logo-img">
-        </div>
+            <div class="logo-icon">
+                <img src="Logo.png" alt="EventHive Logo" class="logo-img">
+            </div>
             <h1>EventHive</h1>
         </div>
 
@@ -32,7 +36,7 @@
                 <i class="fas fa-envelope-open"></i>
                 <span class="nav-text">Inbox</span>
             </a>
-            <a href="home_page.html" class="nav-item">
+            <a href="home_page.html" class="nav-item" id="logoutBtn">
                 <i class="fas fa-sign-out-alt"></i>
                 <span class="nav-text">Logout</span>
             </a>
@@ -41,212 +45,64 @@
 
     <!-- Main Content -->
     <div class="main-content">
-        <header class="admin-header" style="background: linear-gradient(rgba(22, 27, 51, 0.9), rgba(22, 27, 51, 0.9)), url('https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+        <header class="admin-header">
             <div class="admin-header-content">
                 <h2>Event Management Dashboard</h2>
                 <div class="admin-stats">
                     <div class="stat">
                         <i class="fas fa-calendar-check"></i>
                         <div>
-                            <span class="stat-number">3</span>
+                            <span class="stat-number" id="activeCount">0</span>
                             <span class="stat-label">Active Events</span>
                         </div>
                     </div>
                     <div class="stat">
                         <i class="fas fa-clock"></i>
                         <div>
-                            <span class="stat-number">4</span>
+                            <span class="stat-number" id="pendingCount">0</span>
                             <span class="stat-label">Pending Events</span>
-                        </div>
-                    </div>
-                    <div class="stat">
-                        <i class="fas fa-ticket-alt"></i>
-                        <div>
-                            <span class="stat-number">12,420</span>
-                            <span class="stat-label">Tickets Sold</span>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
 
-        <!-- Active Events Column -->
-    <div class="admin-column">
-        <h2 class="section-title"><i class="fas fa-calendar-check"></i> Active Events</h2>
-        <div id="activeEventsContainer"></div>
-    </div>
+        <!-- Events Columns Container -->
+        <div class="events-columns">
+            <!-- Active Events Column -->
+            <div class="admin-column">
+                <h2 class="section-title"><i class="fas fa-calendar-check"></i> Active Events</h2>
+                <div class="search-bar">
+                    <input type="text" id="activeSearch" placeholder="Search active events...">
+                    <button class="btn search-btn" onclick="handleActiveSearch()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div id="activeEventsContainer"></div>
+            </div>
 
-    <!-- Pending Events Column -->
-    <div class="admin-column pending">
-        <h2 class="section-title"><i class="fas fa-clock"></i> Pending Events</h2>
-        <div id="pendingEventsContainer"></div>
-    </div>
+            <!-- Pending Events Column -->
+            <div class="admin-column pending">
+                <h2 class="section-title"><i class="fas fa-clock"></i> Pending Events</h2>
+                <div class="search-bar">
+                    <input type="text" id="pendingSearch" placeholder="Search pending events...">
+                    <button class="btn search-btn" onclick="handlePendingSearch()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div id="pendingEventsContainer"></div>
+            </div>
+        </div>
 
         <!-- Footer -->
         <footer>
-          <div class="footer-links">
-            <a href="#">About Us</a>
-            <a href="#">Contact</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Careers</a>
-        </div>
 
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-
-        <p>&copy; 2025 EventHive. All rights reserved. "Where Moments Become Memories"</p>
+            <p>&copy; 2025 EventHive. All rights reserved. "Where Moments Become Memories"</p>
         </footer>
     </div>
 
-    <script>
-        // Load admin events on page load
-        window.addEventListener('DOMContentLoaded', loadAdminEvents);
-        
-        async function loadAdminEvents() {
-            const res = await fetch('/admin-events');
-            const events = await res.json();
-        
-            const activeColumn = document.querySelector('.admin-column:not(.pending)');
-            const pendingColumn = document.querySelector('.admin-column.pending');
-        
-            activeColumn.innerHTML = '<h2 class="section-title"><i class="fas fa-calendar-check"></i> Active Events</h2>';
-            pendingColumn.innerHTML = '<h2 class="section-title"><i class="fas fa-clock"></i> Pending Events</h2>';
-        
-            events.forEach(event => {
-                const card = document.createElement('div');
-                card.className = 'admin-card' + (event.status === 'pending' ? ' pending' : '');
-        
-                card.innerHTML = `
-                    <div class="event-meta">
-                        <p><strong>${event.name}</strong></p>
-                        <p><i class="fas fa-map-marker-alt"></i> ${event.address}</p>
-                        <p><i class="fas fa-calendar-alt"></i> ${new Date(event.date).toLocaleDateString()}</p>
-                        <p><i class="fas fa-ticket-alt"></i> Available: ${event.nr_of_tickets}</p>
-                        ${event.status === 'pending' ? '<p><i class="fas fa-clock"></i> Pending Approval</p>' : ''}
-                    </div>
-                    <div class="admin-actions">
-                        ${
-                            event.status === 'pending'
-                            ? `
-                                <button class="btn btn-success" onclick="approveEvent(${event.EventID})"><i class="fas fa-check"></i> Approve</button>
-                                <button class="btn btn-danger" onclick="deleteEvent(${event.EventID})"><i class="fas fa-times"></i> Reject</button>
-                            `
-                            : `
-                                <button class="btn btn-danger" onclick="deleteEvent(${event.EventID})"><i class="fas fa-trash"></i> Delete</button>
-                            `
-                        }
-                    </div>
-                `;
-        
-                if (event.status === 'pending') {
-                    pendingColumn.appendChild(card);
-                } else {
-                    activeColumn.appendChild(card);
-                }
-            });
-        }
-        
-        async function approveEvent(eventId) {
-            const res = await fetch('/approve-event', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ eventId })
-            });
-            const data = await res.json();
-            if (data.success) {
-                alert('Event approved!');
-                loadAdminEvents();
-            }
-        }
-        
-        async function deleteEvent(eventId) {
-            const res = await fetch('/delete-event', {
-                method: 'DELETE',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ eventId })
-            });
-            const data = await res.json();
-            if (data.success) {
-                alert('Event deleted!');
-                loadAdminEvents();
-            }
-        }
-    </script>
-    
-
-    <script>
-        async function loadEventsForAdmin() {
-            try {
-                const res = await fetch('/all-events');
-                const events = await res.json();
-    
-                const activeContainer = document.getElementById('activeEventsContainer');
-                const pendingContainer = document.getElementById('pendingEventsContainer');
-    
-                events.forEach(event => {
-                    const card = document.createElement('div');
-                    card.classList.add('admin-card');
-                    if (event.status.toLowerCase() === 'pending') card.classList.add('pending');
-    
-                    card.innerHTML = `
-                        <div class="event-meta">
-                            <p><strong>${event.name}</strong></p>
-                            <p><i class="fas fa-map-marker-alt"></i> ${event.address}</p>
-                            <p><i class="fas fa-calendar-alt"></i> ${new Date(event.date).toLocaleDateString()}</p>
-                            <p><i class="fas fa-ticket-alt"></i> Available: ${event.nr_of_tickets}</p>
-                            <p><i class="fas fa-${event.status === 'pending' ? 'clock' : 'check-circle'}"></i> ${event.status === 'pending' ? 'Pending Approval' : 'Active'}</p>
-                        </div>
-                        <div class="admin-actions">
-                            ${event.status === 'pending' ? `
-                                <button class="btn btn-success" onclick="updateStatus('${event.name}', 'active')"><i class="fas fa-check"></i> Approve</button>
-                                <button class="btn btn-danger" onclick="deleteEvent('${event.name}')"><i class="fas fa-times"></i> Reject</button>
-                            ` : `
-                                <button class="btn btn-danger" onclick="deleteEvent(${event.EventID})"><i class="fas fa-trash"></i> Delete</button>
-                            `}
-                        </div>
-                    `;
-    
-                    if (event.status.toLowerCase() === 'pending') {
-                        pendingContainer.appendChild(card);
-                    } else {
-                        activeContainer.appendChild(card);
-                    }
-                });
-            } catch (err) {
-                console.error('Failed to load events:', err);
-            }
-        }
-    
-        async function updateStatus(eventName, newStatus) {
-            await fetch('/update-event-status', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name: eventName, status: newStatus })
-            });
-            location.reload();
-        }
-    
-        async function deleteEvent(eventId) {
-            const res = await fetch('/delete-event', {
-                method: 'DELETE',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ eventId })
-            });
-            const data = await res.json();
-            if (data.success) {
-                alert('Event deleted!');
-                loadAdminEvents();
-            }
-        }
-
-
-        window.addEventListener('DOMContentLoaded', loadEventsForAdmin);
-    </script>
-    
+    <script src="admin_events.js"></script>
+    <script src="logout.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="jquery-3.6.0">
+    <archive path="C:/Users/HP/AppData/Roaming/JetBrains/IntelliJIdea2024.1/javascript/extLibs/http_code.jquery.com_jquery-3.6.0.js" />
+  </library>
+  <library name="font-awesome">
+    <archive path="C:/Users/HP/AppData/Roaming/JetBrains/IntelliJIdea2024.1/javascript/extLibs/http_cdnjs.cloudflare.com_ajax_libs_font-awesome_6.5.1_css_all.css" />
+  </library>
+  <library name="d3.v5">
+    <archive path="C:/Users/HP/AppData/Roaming/JetBrains/IntelliJIdea2024.1/javascript/extLibs/http_d3js.org_d3.v5.js" />
+  </library>
+</eclipse-userlibraries>
+

@@ -1,58 +1,116 @@
-/* Event Status Styles */
-.event-status {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-
-.event-status.upcoming {
-    background: var(--gold);
-    color: var(--navy);
-}
-
-.event-status.ongoing {
-    background: #4CAF50;
-    color: white;
-}
-
-.event-status.sold-out {
-    background: #f44336;
-    color: white;
-}
-
-.event-status.cancelled {
-    background: #9E9E9E;
-    color: white;
-}
-
-.event-status.past {
-    background: #607D8B;
-    color: white;
-}
-
 .event-info {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
 }
 
 .event-info h3 {
-    margin-right: 100px;
+  margin-right: 15px; 
 }
 
 .event-info p {
-    margin: 8px 0;
-    color: var(--slate);
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  margin: 8px 0;
+  color: var(--slate);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-/* Adjust user-card padding for events */
-.user-card.event-card {
-    padding: 20px;
-    position: relative;
+.organiser-card {
+  padding: 20px;
+}
+
+/* Main Layout */
+.main-content {
+position: relative;
+z-index: 1;
+margin-left: 80px;
+transition: margin-left 0.3s ease;
+}
+
+.sidebar.expanded + .main-content {
+margin-left: 250px;
+}
+
+/* Organiser Header */
+.organiser-header {
+background: linear-gradient(rgba(22, 27, 51, 0.9), rgba(22, 27, 51, 0.9)),
+            url('https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+background-size: cover !important;
+background-position: center !important;
+color: white;
+padding: 30px 40px;
+position: relative;
+overflow: hidden;
+box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+display: flex;
+justify-content: space-between;
+align-items: center;
+min-height: 180px;
+}
+
+.organiser-header-content {
+position: relative;
+z-index: 1;
+width: 80%;
+}
+
+.organiser-header h2 {
+font-size: 2rem;
+margin-bottom: 20px;
+color: var(--gold);
+text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Stats Row */
+.organiser-stats {
+display: flex;
+gap: 20px;
+flex-wrap: nowrap;
+}
+
+/* Events Columns */
+.events-columns {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+gap: 30px;
+padding: 20px;
+}
+
+.organiser-column {
+background: white;
+padding: 25px;
+border-radius: 10px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.organiser-column.pending {
+background: var(--cream);
+border: 2px solid var(--gold);
+}
+
+/* Organiser Cards */
+.organiser-card {
+background: white;
+padding: 20px;
+margin-bottom: 20px;
+border-radius: 8px;
+border-left: 4px solid var(--slate);
+transition: transform 0.3s ease;
+}
+
+.organiser-card:hover {
+transform: translateY(-5px);
+}
+
+.organiser-card.pending {
+border-left-color: var(--gold);
+background: var(--cream);
+}
+
+/* Buttons */
+.organiser-actions {
+display: flex;
+gap: 15px;
+margin-top: 20px;
+justify-content: flex-end;
 }

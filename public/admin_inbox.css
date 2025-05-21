@@ -101,3 +101,82 @@
     border-radius: 6px;
     margin-top: 8px;
 }
+
+.search-bar {
+    position: relative;
+    left: 50%;
+    transform: translateX(calc(-50% - 40px)); /* 40px = half of sidebar width (80px/2) */
+    max-width: 450px;
+    width: 90%;
+    margin: 20px 0 30px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 14px 50px 14px 25px;
+    border: 2px solid var(--lavender);
+    border-radius: 30px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.search-bar input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 10px rgba(244, 211, 94, 0.3);
+}
+
+.search-btn {
+    position: absolute;
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    color: var(--slate);
+    padding: 0;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: none !important; /* Disable hover movement */
+}
+
+.search-btn:hover {
+    transform: translateY(-50%) scale(1.1); /* Keep position fixed on hover */
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.user-card.highlight {
+    animation: highlightUser 1.5s ease;
+    border: 2px solid var(--gold);
+}
+
+@keyframes highlightUser {
+    0% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+/* Adjust existing role-select */
+.role-select {
+    margin-right: 15px;
+}
+
+/* Modal footer design */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 20px;
+}
+
+.btn-approve {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-decline {
+    background-color: #dc3545;
+    color: white;
+}

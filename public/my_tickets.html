@@ -34,7 +34,11 @@
                     <i class="fas fa-user"></i>
                     <span class="nav-text">Account</span>
                 </a>
-                <a href="home_page.html" class="nav-item">
+                <a href="organiser_inbox.html" class="nav-item">
+                    <i class="fas fa-envelope"></i>
+                    <span class="nav-text">Applications</span>
+                </a>
+                <a href="home_page.html" class="nav-item" id="logoutBtn">
                     <i class="fas fa-sign-out-alt"></i>
                     <span class="nav-text">Logout</span>
                 </a>
@@ -44,81 +48,18 @@
             <!-- Header Section -->
             <section class="header" style="background-image: linear-gradient(rgba(22, 27, 51, 0.8), rgba(22, 27, 51, 0.8)), url('https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
                 <h2>My Tickets</h2>
-                <p>View and manage all your upcoming event tickets</p>
+                <p>Browse and manage all the tickets you've purchased for upcoming events.</p>
+                <p>Stay organized and never miss a moment!</p>
             </section>
 
             <!-- Tickets Section -->
             <section class="section">
                 <div class="tickets-container">
-                    <div class="ticket-card">
-                        <div class="ticket-header">
-                            <h3>Summer Music Festival</h3>
-                            <span class="ticket-status confirmed">Confirmed</span>
-                        </div>
-                        <div class="ticket-details">
-                            <p><i class="fas fa-calendar-alt"></i> June 10-12, 2025</p>
-                            <p><i class="fas fa-map-marker-alt"></i> Center, Cluj-Napoca</p>
-                            <p><i class="fas fa-ticket-alt"></i> Ticket #EVH-789456</p>
-                            <p><i class="fas fa-user-friends"></i> 2 Adults</p>
-                        </div>
-                        <div class="ticket-actions">
-                            <button class="btn view-btn">View Ticket</button>
-                            <button class="btn cancel-btn">Cancel</button>
-                        </div>
-                    </div>
-
-                    <div class="ticket-card">
-                        <div class="ticket-header">
-                            <h3>Tech Innovators Summit</h3>
-                            <span class="ticket-status confirmed">Confirmed</span>
-                        </div>
-                        <div class="ticket-details">
-                            <p><i class="fas fa-calendar-alt"></i> August 5-7, 2025</p>
-                            <p><i class="fas fa-map-marker-alt"></i> Piata Unirii, Cluj-Napoca</p>
-                            <p><i class="fas fa-ticket-alt"></i> Ticket #EVH-123789</p>
-                            <p><i class="fas fa-user-friends"></i> 1 VIP Pass</p>
-                        </div>
-                        <div class="ticket-actions">
-                            <button class="btn view-btn">View Ticket</button>
-                            <button class="btn cancel-btn">Cancel</button>
-                        </div>
-                    </div>
-
-                    <div class="ticket-card past-event">
-                        <div class="ticket-header">
-                            <h3>Jazz Under the Stars</h3>
-                            <span class="ticket-status completed">Completed</span>
-                        </div>
-                        <div class="ticket-details">
-                            <p><i class="fas fa-calendar-alt"></i> June 15-18, 2024</p>
-                            <p><i class="fas fa-map-marker-alt"></i> Parcul Etnografic, Cluj-Napoca</p>
-                            <p><i class="fas fa-ticket-alt"></i> Ticket #EVH-456123</p>
-                            <p><i class="fas fa-user-friends"></i> 4 Adults</p>
-                        </div>
-                        <div class="ticket-actions">
-                            <button class="btn review-btn">Leave Review</button>
-                        </div>
-                    </div>
                 </div>
             </section>
 
             <!-- Footer -->
             <footer>
-                <div class="footer-links">
-                    <a href="#">About Us</a>
-                    <a href="#">Contact</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Careers</a>
-                </div>
-
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-
                 <p>&copy; 2025 EventHive. All rights reserved. "Where Moments Become Memories"</p>
             </footer>
         </div>
@@ -132,10 +73,9 @@
                     <img id="modalQRCode" src="" alt="QR Code">
                 </div>
                 <div class="ticket-info">
-                    <p><strong>Ticket #:</strong> <span id="modalTicketNumber">EVH-000000</span></p>
-                    <p><strong>Date:</strong> <span id="modalEventDate">Date</span></p>
-                    <p><strong>Location:</strong> <span id="modalEventLocation">Location</span></p>
-                    <p><strong>Attendees:</strong> <span id="modalAttendees">0</span></p>
+                    <p><strong>Please show this QR code at the venue entrance.</strong></p>
+                    <p><strong>Ticket #</strong> <span id="modalTicketNumber"></span></p>
+                    <p><strong>Type </strong> <span id="modalAttendees">0</span></p>
                 </div>
                 <div class="modal-actions">
                     <button class="btn download-btn">
@@ -148,151 +88,8 @@
             </div>
         </div>
 
-        <!-- Review Modal -->
-        <div id="reviewModal" class="modal">
-            <div class="modal-content">
-                <span class="close-modal">&times;</span>
-                <h3>Leave a Review for Jazz Under the Stars</h3>
 
-                <div class="rating-container">
-                    <label>Your Rating:</label>
-                    <div class="stars">
-                        <span class="star" data-rating="1"><i class="fas fa-star"></i></span>
-                        <span class="star" data-rating="2"><i class="fas fa-star"></i></span>
-                        <span class="star" data-rating="3"><i class="fas fa-star"></i></span>
-                        <span class="star" data-rating="4"><i class="fas fa-star"></i></span>
-                        <span class="star" data-rating="5"><i class="fas fa-star"></i></span>
-                    </div>
-                </div>
-
-                <textarea class="review-textarea" placeholder="Share your experience at this event..."></textarea>
-
-                <div class="modal-actions">
-                    <button class="btn cancel-review-btn">Cancel</button>
-                    <button class="btn submit-btn">Submit Review</button>
-                </div>
-            </div>
-
-        </div>
-
-        <script>
-
-            // Updated Ticket Modal functionality
-            const viewButtons = document.querySelectorAll('.view-btn');
-            const ticketModal = document.getElementById('ticketModal');
-
-            // Open Ticket Modal with correct event details
-            viewButtons.forEach((btn, index) => {
-                btn.addEventListener('click', () => {
-                    const ticketCard = btn.closest('.ticket-card');
-                    const eventTitle = ticketCard.querySelector('h3').textContent;
-                    const ticketNumber = ticketCard.querySelectorAll('.ticket-details p')[2].textContent.replace('Ticket #', '').trim();
-                    const eventDate = ticketCard.querySelectorAll('.ticket-details p')[0].textContent.replace('📅 ', '').trim();
-                    const eventLocation = ticketCard.querySelectorAll('.ticket-details p')[1].textContent.replace('📍 ', '').trim();
-                    const attendees = ticketCard.querySelectorAll('.ticket-details p')[3].textContent;
-
-                    // Set modal content
-                    document.getElementById('modalEventTitle').textContent = eventTitle;
-                    document.getElementById('modalTicketNumber').textContent = ticketNumber;
-                    document.getElementById('modalEventDate').textContent = eventDate;
-                    document.getElementById('modalEventLocation').textContent = eventLocation;
-                    document.getElementById('modalAttendees').textContent = attendees;
-
-                    // Generate unique QR code for each ticket
-                    document.getElementById('modalQRCode').src =
-                        `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Ticket${ticketNumber}`;
-
-                    ticketModal.style.display = 'flex';
-                });
-            });
-
-            const reviewButtons = document.querySelectorAll('.review-btn');
-            const reviewModal = document.getElementById('reviewModal');
-            const closeButtons = document.querySelectorAll('.close-modal');
-            const stars = document.querySelectorAll('.star');
-            const cancelReviewBtn = document.querySelector('.cancel-review-btn');
-            let selectedRating = 0;
-
-            // Open Review Modal
-            reviewButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    reviewModal.style.display = 'flex';
-                });
-            });
-
-            // Close any modal when clicking X
-            closeButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    document.querySelectorAll('.modal').forEach(modal => {
-                        modal.style.display = 'none';
-                    });
-                    resetReviewForm();
-                });
-            });
-
-            // Close modal when clicking outside
-            window.addEventListener('click', (e) => {
-                if (e.target.classList.contains('modal')) {
-                    document.querySelectorAll('.modal').forEach(modal => {
-                        modal.style.display = 'none';
-                    });
-                    resetReviewForm();
-                }
-            });
-
-            // Cancel Review button
-            cancelReviewBtn.addEventListener('click', () => {
-                reviewModal.style.display = 'none';
-                resetReviewForm();
-            });
-
-            // Star rating functionality
-            stars.forEach(star => {
-                star.addEventListener('click', () => {
-                    const rating = parseInt(star.getAttribute('data-rating'));
-                    selectedRating = rating;
-
-                    stars.forEach((s, index) => {
-                        if (index < rating) {
-                            s.classList.add('active');
-                        } else {
-                            s.classList.remove('active');
-                        }
-                    });
-                });
-            });
-
-            function resetReviewForm() {
-                selectedRating = 0;
-                document.querySelector('.review-textarea').value = '';
-                stars.forEach(star => {
-                    star.classList.remove('active');
-                });
-            }
-
-            // Submit review functionality
-            document.querySelector('.submit-btn').addEventListener('click', () => {
-                const reviewText = document.querySelector('.review-textarea').value;
-
-                if (selectedRating === 0) {
-                    alert('Please select a rating before submitting.');
-                    return;
-                }
-
-                if (reviewText.trim() === '') {
-                    alert('Please write a review before submitting.');
-                    return;
-                }
-
-                reviewModal.style.display = 'none';
-                resetReviewForm();
-                alert('Review submitted!');
-
-                // Disable the review button after submission
-                document.querySelector('.review-btn').disabled = true;
-                document.querySelector('.review-btn').textContent = 'Review Submitted';
-                document.querySelector('.review-btn').style.backgroundColor = '#e0e0e0';
-            });
-        </script>
+        <script src="my_tickets.js"></script>
+        <script src="logout.js"></script>
     </body>
 </html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventHive - My Applications</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="home_page.css">
+    <link rel="stylesheet" href="admin_events.css">
+    <link rel="stylesheet" href="organiser_inbox.css">
+    <!-- <link rel="stylesheet" href="admin_inbox.css"> -->
+    <link rel="icon" type="image/png" href="Logo.png">
+</head>
+<body>
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <div class="logo-icon">
+            <img src="Logo.png" alt="EventHive Logo" class="logo-img">
+        </div>
+        <h1>EventHive</h1>
+    </div>
+    <div class="nav-menu">
+        <a href="client_home_page.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span class="nav-text">Home</span>
+        </a>
+        <a href="my_tickets.html" class="nav-item">
+            <i class="fas fa-ticket-alt"></i>
+            <span class="nav-text">My Tickets</span>
+        </a>
+        <a href="my_account.html" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span class="nav-text">Account</span>
+        </a>
+        <a href="organiser_inbox.html" class="nav-item">
+            <i class="fas fa-envelope"></i>
+            <span class="nav-text">Applications</span>
+        </a>
+        <a href="home_page.html" class="nav-item" id="logoutBtn">
+            <i class="fas fa-sign-out-alt"></i>
+            <span class="nav-text">Logout</span>
+        </a>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+    <header class="admin-header"
+            style="background: linear-gradient(rgba(22, 27, 51, 0.9), rgba(22, 27, 51, 0.9)), url('https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+        <div class="admin-header-content">
+            <h2>My Applications</h2>
+            <div class="admin-stats">
+                <div class="stat">
+                    <i class="fas fa-paper-plane"></i>
+                    <div>
+                        <span class="stat-number" id="sentApplicationsCount">0</span>
+                        <span class="stat-label">Sent Applications</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="applications-container" id="applicationsContainer">
+            
+        </div>
+    </section>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 EventHive. All rights reserved. "Where Moments Become Memories"</p>
+</footer>
+
+
+<script src="organiser_inbox.js"></script>
+<script src="organiser_inbox_tests.js"></script>
+
+<script src="logout.js"></script>
+</body>
+</html>

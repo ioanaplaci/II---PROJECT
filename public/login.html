@@ -27,49 +27,12 @@
 
                 <!-- Added the words as links for the new pages appeared -->
                 <div class="options">
-                    <a href="create_account.html">Create new <span class="create-new-account-link">account</span></a>
-                    <a href="#">Forgot your <span class="forgot-password-link">password</span>   ?</a>
+                    <a href="create_account.html">Don't have an account yet? Create <span class="create-new-account-link">new account.</span></a>
                 </div>
         </div>
-
+        <div id="notification" class="notification hidden"></div>
         <!-- Javascript -->
-        <script>
-            document.querySelector('.login-btn').addEventListener('click', async (e) => {
-                e.preventDefault();
-        
-                const email = document.querySelector('input[name="email"]').value;
-                const password = document.querySelector('input[name="password"]').value;
-        
-                // Validate inputs (optional)
-                if (!email || !password) {
-                    alert('Please enter both email and password.');
-                    return;
-                }
-        
-                try {
-                    const res = await fetch('/login', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ email, password })
-                    });
-        
-                    const data = await res.json();
-        
-                    if (data.success) {
-                        // Store token (optional use for protected pages)
-                        localStorage.setItem('token', data.token);
-                        // Redirect based on user role
-                        window.location.href = data.redirectTo;
-                    } else {
-                        alert('Invalid email or password.');
-                    }
-                } catch (err) {
-                    console.error('Login request failed:', err);
-                    alert('Login failed due to server error.');
-                }
-            });
-        </script>
-        
-    
+        <script src="login.js"></script>
+        <script src="login_tests.js"></script>
     </body>
 </html>

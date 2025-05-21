@@ -64,71 +64,14 @@
 
         <!--   Submit button     -->
         <button type="submit" class="submit-btn">Submit</button>
-
+        <div class="account-prompt">
+            Already have an account? <a href="login.html">Log in</a>
+        </div>
     </div>
 
     <!-- Nu stiu la virgula ce face, dar face lista de optiuni pentru varsta so here it is   -->
-    <script>
-    const ageDropdown = document.querySelector('.dropdown');
-    const selected = document.querySelector('.dropdown-selected');
-    const optionsContainer = document.getElementById('age-options');
-    const ageHidden = document.getElementById('age-hidden');
+    <script src="create_account.js"></script>
+    <script src="create_account_tests.js"></script>
 
-    for (let i = 0; i <= 100; i++) {
-        const option = document.createElement('div');
-        option.classList.add('dropdown-option');
-        option.textContent = i;
-        option.dataset.value = i;
-        optionsContainer.appendChild(option);
-    }
-
-    selected.addEventListener('click', () => {
-        optionsContainer.style.display = optionsContainer.style.display === 'block' ? 'none' : 'block';
-    });
-
-    optionsContainer.addEventListener('click', (e) => {
-        if (e.target.classList.contains('dropdown-option')) {
-            const value = e.target.dataset.value;
-            selected.textContent = value;
-            ageHidden.value = value;
-            optionsContainer.style.display = 'none';
-        }
-    });
-
-    window.addEventListener('click', (e) => {
-        if (!ageDropdown.contains(e.target)) {
-            optionsContainer.style.display = 'none';
-        }
-    });
-    </script>
-    
-    
-    <script> //this makes create account work
-    document.querySelector('.submit-btn').addEventListener('click', async (e) => {
-        e.preventDefault(); //stop the default form submission
-    
-        const firstName = document.getElementById('firstName').value;
-        const lastName = document.getElementById('lastName').value;
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        const age = document.getElementById('age-hidden').value;
-
-    
-        const res = await fetch('/register', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ firstName, lastName, email, password, age })
-        });
-    
-        const data = await res.json();
-        if (data.success) {
-            alert('Account created!');
-            window.location.href = 'login.html';
-        } else {
-            alert('Failed to create account.');
-        }
-    });
-    </script>
-    
-    </body>
+</body>
 </html>

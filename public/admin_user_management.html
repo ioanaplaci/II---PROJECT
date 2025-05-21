@@ -34,7 +34,7 @@
                 <i class="fas fa-envelope-open"></i>
                 <span class="nav-text">Inbox</span>
             </a>
-            <a href="home_page.html" class="nav-item">
+            <a href="home_page.html" class="nav-item" id="logoutBtn">
                 <i class="fas fa-sign-out-alt"></i>
                 <span class="nav-text">Logout</span>
             </a>
@@ -51,28 +51,28 @@
                     <div class="stat">
                         <i class="fas fa-users"></i>
                         <div>
-                            <span class="stat-number">1,234</span>
-                            <span class="stat-label">Total Users</span>
+                            <span class="stat-number" id="clientCount"></span>
+                            <span class="stat-label">Clients</span>
                         </div>
                     </div>
                     <div class="stat">
                         <i class="fas fa-user-tie"></i>
                         <div>
-                            <span class="stat-number">89</span>
+                            <span class="stat-number" id="organizerCount"></span>
                             <span class="stat-label">Organizers</span>
                         </div>
                     </div>
                     <div class="stat">
                         <i class="fas fa-user-shield"></i>
                         <div>
-                            <span class="stat-number">5</span>
+                            <span class="stat-number" id="adminCount"></span>
                             <span class="stat-label">Admins</span>
                         </div>
                     </div>
                 </div>
-
             </div>
         </header>
+    
 
         <section class="section">
             <div class="search-bar">
@@ -92,200 +92,14 @@
 
         <!-- Footer -->
         <footer>
-            <div class="footer-links">
-                <a href="#">About Us</a>
-                <a href="#">Contact</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Careers</a>
-            </div>
-
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            </div>
+            
 
             <p>&copy; 2025 EventHive. All rights reserved. "Where Moments Become Memories"</p>
         </footer>
     </div>
-
-    <script>
-        // Search functionality
-        function handleSearch() {
-            const searchTerm = document.getElementById('userSearch').value.trim().toLowerCase();
-            const users = document.querySelectorAll('.user-card');
-            let foundMatch = false;
-
-            // Reset all users first
-            users.forEach(user => user.style.display = 'flex');
-
-            if (searchTerm === '') return;
-
-            users.forEach(user => {
-                const userName = user.dataset.name.toLowerCase();
-                if (!userName.includes(searchTerm)) {
-                    user.style.display = 'none';
-                } else {
-                    foundMatch = true;
-                    if (!document.querySelector('.highlight')) {
-                        user.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        user.classList.add('highlight');
-                        setTimeout(() => user.classList.remove('highlight'), 1500);
-                    }
-                }
-            });
-
-            if (!foundMatch) {
-                alert(`No users found matching "${searchTerm}"`);
-            }
-        }
-
-        // Event Listeners
-        document.getElementById('userSearch').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                handleSearch();
-            }
-        });
-
-        document.querySelector('.search-btn').addEventListener('click', handleSearch);
-    </script>
-
-    
-    <script>
-        // Save button functionality
-            document.querySelectorAll('.btn-save').forEach(button => {
-                button.addEventListener('click', () => {
-                const userCard = button.closest('.user-card');
-                const email = userCard.querySelector('p i.fa-envelope').parentElement.textContent.trim().split(' ')[1];
-                const selectedRole = userCard.querySelector('.role-dropdown').value;
-
-                fetch('/update-role', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, role: selectedRole })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert('Role updated successfully!');
-                    } else {
-                        alert('Failed to update role.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Error occurred while updating role.');
-                });
-            });
-        });
-    </script>
-
-    
-
-    
-    <script>
-        // Load users from the server
-        async function loadUsers() {
-            try {
-                const response = await fetch('/users');
-                const users = await response.json();
-
-                const container = document.getElementById('usersContainer');
-                container.innerHTML = ''; // Clear any existing content
-
-                users.forEach(user => {
-                    const userCard = document.createElement('div');
-                    userCard.className = 'user-card';
-                    userCard.dataset.name = `${user.FirstName} ${user.LastName}`.toLowerCase();
-
-                    userCard.innerHTML = `
-                        <div class="user-info">
-                            <div class="user-avatar">
-                                <i class="fas fa-user-circle"></i>
-                            </div>
-                            <div class="user-details">
-                                <h3>${user.FirstName} ${user.LastName}</h3>
-                                <p><i class="fas fa-envelope"></i> ${user.Email}</p>
-                                <p><i class="fas fa-birthday-cake"></i> ${user.Age} years</p>
-                            </div>
-                        </div>
-                        <div class="user-actions">
-                            <div class="role-select">
-                                <label>Role:</label>
-                                <select class="role-dropdown">
-                                    <option value="client" ${user.Role === 'client' ? 'selected' : ''}>Client</option>
-                                    <option value="organizer" ${user.Role === 'organizer' ? 'selected' : ''}>Organizer</option>
-                                    <option value="admin" ${user.Role === 'admin' ? 'selected' : ''}>Admin</option>
-                                </select>
-                            </div>
-                            <div class="action-buttons">
-                                <button class="btn btn-save">
-                                    <i class="fas fa-save"></i> Save
-                                </button>
-                                <button class="btn btn-danger">
-                                    <i class="fas fa-trash"></i> Delete
-                                </button>
-                            </div>
-                        </div>
-                    `;
-
-                    // Add save button functionality
-                    const saveBtn = userCard.querySelector('.btn-save');
-                    const dropdown = userCard.querySelector('.role-dropdown');
-
-                    saveBtn.addEventListener('click', () => {
-                        fetch('/update-role', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                email: user.Email,
-                                role: dropdown.value
-                            })
-                        })
-                        .then(res => res.json())
-                        .then(data => {
-                            if (data.success) {
-                                alert('Role updated successfully!');
-                            } else {
-                                alert('Failed to update role.');
-                            }
-                        });
-                    });
-
-                    container.appendChild(userCard);
-
-                    // Add delete button functionality
-                    const deleteBtn = userCard.querySelector('.btn-danger');
-
-                    deleteBtn.addEventListener('click', async () => {
-                        if (confirm(`Are you sure you want to delete ${user.Email}?`)) {
-                            const res = await fetch('/delete-user', {
-                                method: 'DELETE',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({ email: user.Email })
-                            });
-
-                            const data = await res.json();
-                            if (data.success) {
-                                alert('User deleted successfully!');
-                                userCard.remove(); // Remove from the DOM
-                            } else {
-                                alert('Failed to delete user.');
-                            }
-                        }
-                    });
-                });
-            } catch (err) {
-                console.error('Failed to load users:', err);
-            }
-        }
-
-        // Load users on page load
-        window.addEventListener('DOMContentLoaded', loadUsers);
-    </script>
-
+    <script src="admin_user_management.js"></script>
+    <script src="admin_user_management_tests.js"></script>
+    <script src="logout.js"></script>
 </body>
 
 </html>

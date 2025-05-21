@@ -1,427 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>EventHive - Where Moments Become Memories</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <link rel="stylesheet" href="client_home_page.css" />
-        <link rel="icon" type="image/png" href="Logo.png">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>EventHive - Where Moments Become Memories</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="client_home_page.css" />
+    <link rel="icon" type="image/png" href="Logo.png">
+</head>
+<body>
 
-    </head>
-    <body>
-        <!-- Sidebar -->
-        <div class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <!--  All the logos from sidebar              -->
-                <div class="logo-icon">
-                    <img src="Logo.png" alt="EventHive Logo" class="logo-img">
+<!-- ✅ Sidebar -->
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <div class="logo-icon">
+            <img src="Logo.png" alt="EventHive Logo" class="logo-img">
+        </div>
+        <h1>EventHive</h1>
+    </div>
+
+    <div class="nav-menu">
+        <a href="client_home_page.html" class="nav-item"><i class="fas fa-home"></i><span class="nav-text">Home</span></a>
+        <a href="my_tickets.html" class="nav-item"><i class="fas fa-ticket-alt"></i><span class="nav-text">My Tickets</span></a>
+        <a href="my_account.html" class="nav-item"><i class="fas fa-user"></i><span class="nav-text">Account</span></a>
+        <a href="organiser_inbox.html" class="nav-item"><i class="fas fa-envelope"></i><span class="nav-text">Applications</span></a>
+        <a href="home_page.html" class="nav-item" id="logoutBtn"><i class="fas fa-sign-out-alt"></i><span class="nav-text">Logout</span></a>
+    </div>
+</div>
+
+<!-- ✅ Main Content -->
+<div class="main-content">
+    <section class="header">
+        <h2>Moto Moto likes disco</h2>
+        <p>Discover unforgettable experiences, connect with your passions, and collect moments that last a lifetime. Your next adventure starts here.</p>
+    </section>
+
+    <div class="events-container" id="eventsContainer">
+        <!-- Events will be loaded here dynamically -->
+    </div>
+
+    <!-- Why Choose Us -->
+    <section class="features">
+        <h2 class="section-title" style="color: white;">Why Choose EventHive?</h2>
+        <div class="features-container">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                <h3>Instant Access</h3>
+                <p>Get your tickets immediately after purchase with our digital delivery system.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Secure Booking</h3>
+                <p>Your transactions are protected with industry-leading security measures.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-heart"></i></div>
+                <h3>Curated Selection</h3>
+                <p>We handpick events to ensure quality experiences for our community.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Become an Organizer -->
+    <section class="organiser">
+        <div class="organiser-container">
+            <div class="title"><h4>Want to become an organiser?</h4></div>
+            <div class="paragraph"><p>Join our network of event organisers and create unforgettable experiences for our community.</p></div>
+            <div class="buttons"><a href="organiser_application.html" class="btn_organiser">Apply Now</a></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 EventHive. All rights reserved. "Where Moments Become Memories"</p>
+    </footer>
+</div>
+
+<!-- Ticket Purchase Modal -->
+<div id="ticketModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>Purchase Tickets</h3>
+
+        <div class="event-info">
+            <h4 id="modalEventTitle"></h4>
+            <p><i class="fas fa-calendar-alt"></i> <span id="modalEventDate"></span></p>
+            <p><i class="fas fa-map-marker-alt"></i> <span id="modalEventLocation"></span></p>
+            <p><i class="fas fa-user-tag"></i> <span id="modalAgeRequirement"></span></p>
+            <p><i class="fas fa-users"></i> <span id="modalArtists"></span></p>
+            <p><i class="fas fa-palette"></i> <span id="modalTheme"></span></p>
+        </div>
+
+        <div class="ticket-options">
+            <div class="ticket-type">
+                <div class="ticket-desc">
+                    <h5>General Access</h5>
+                    
                 </div>
-                <h1>EventHive</h1>
+                <div class="ticket-controls">
+                    <div class="ticket-price">49.99</div>
+                    <div class="quantity-selector">
+                        <button class="quantity-btn minus">-</button>
+                        <input type="number" id="general-qty" class="quantity-input" value="0" min="0" max="10">
+                        <button class="quantity-btn plus">+</button>
+                    </div>
+                </div>
             </div>
 
-            <div class="nav-menu">
-                <a href="client_home_page.html" class="nav-item">
-                    <i class="fas fa-home"></i>
-                    <span class="nav-text">Home</span>
-                </a>
-                <a href="my_tickets.html" class="nav-item">
-                    <i class="fas fa-ticket-alt"></i>
-                    <span class="nav-text">My Tickets</span>
-                </a>
-                <a href="my_account.html" class="nav-item">
-                    <i class="fas fa-user"></i>
-                    <span class="nav-text">Account</span>
-                </a>
-                <a href="home_page.html" class="nav-item">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span class="nav-text">Logout</span>
-                </a>
+            <div class="ticket-type">
+                <div class="ticket-desc">
+                    <h5>VIP Access</h5>
+                
+                </div>
+                <div class="ticket-controls">
+                    <div class="ticket-price">149.99</div>
+                    <div class="quantity-selector">
+                        <button class="quantity-btn minus">-</button>
+                        <input type="number" id="vip-qty" class="quantity-input" value="0" min="0" max="10">
+                        <button class="quantity-btn plus">+</button>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <!-- Header Section -->
-            <section class="header">
-                <h2>Moto Moto likes disco</h2>
-                <p>Discover unforgettable experiences, connect with your passions, and collect moments that last a lifetime. Your next adventure starts here.</p>
-                <a href="#current-events" class="btn">Explore Events</a>
-            </section>
-
-
-            <div class="events-container" id="eventsContainer">
-                <!-- Real events will be injected here -->
+        <div class="total-section">
+            <div class="subtotal">
+                <span>Subtotal:</span>
+                <span class="amount">0.00 RON</span>
             </div>
-
-            <!-- Why Choose Us -->
-            <section class="features">
-                <h2 class="section-title" style="color: white;">Why Choose EventHive?</h2>
-                <div class="features-container">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <h3>Instant Access</h3>
-                        <p>Get your tickets immediately after purchase with our digital delivery system.</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3>Secure Booking</h3>
-                        <p>Your transactions are protected with industry-leading security measures.</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <h3>Curated Selection</h3>
-                        <p>We handpick events to ensure quality experiences for our community.</p>
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- Become Organiser Section -->
-            <section class="organiser">
-                <div class="organiser-container">
-                    <div class="title">
-                        <h4>Want to become an organiser?</h4>
-                    </div>
-                    <div class="paragraph">
-                        <p>Join our network of event organisers and create unforgettable experiences for our community.</p>
-                    </div>
-                    <div class="buttons">
-                        <a href="organiser_application.html" class="btn_organiser">Apply Now</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Footer -->
-            <footer>
-                <div class="footer-links">
-                    <a href="#">About Us</a>
-                    <a href="#">Contact</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Careers</a>
-                </div>
-
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-
-                <p>&copy; 2025 EventHive. All rights reserved. "Where Moments Become Memories"</p>
-            </footer>
-        </div>
-
-        <!-- "Get tickets" button the info taken from the event details should be-->
-        <div id="ticketModal" class="modal">
-            <div class="modal-content">
-                <span class="close-modal">&times;</span>
-                <h3>Purchase Tickets</h3>
-
-                <div class="event-info">
-                    <h4 id="modalEventTitle">Summer Music Festival</h4>
-                    <p><i class="fas fa-calendar-alt"></i> <span id="modalEventDate">June 10-12, 2025</span></p>
-                    <p><i class="fas fa-map-marker-alt"></i> <span id="modalEventLocation">Center, Cluj-Napoca</span></p>
-                    <p><i class="fas fa-user-tag"></i> <span id="modalAgeRequirement">Age requirements: 18+</span></p>
-                    <p><i class="fas fa-users"></i> <span id="modalArtists">Artists: Jane Doe, John Smith</span></p>
-                    <p><i class="fas fa-palette"></i> <span id="modalTheme">Theme: Summer Vibes</span></p>
-                </div>
-
-                <div class="ticket-options">
-                    <div class="ticket-type">
-                        <div class="ticket-desc">
-                            <h5>General Admission</h5>
-                            <p>Standard access to all festival areas</p>
-                        </div>
-                        <div class="ticket-controls">
-                            <div class="ticket-price">49.99 RON</div>
-                            <div class="quantity-selector">
-                                <button class="quantity-btn minus">-</button>
-                                <input type="number" value="0" min="0" max="10" class="quantity-input">
-                                <button class="quantity-btn plus">+</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="ticket-type">
-                        <div class="ticket-desc">
-                            <h5>VIP Pass</h5>
-                            <p>Premium seating + backstage access</p>
-                        </div>
-                        <div class="ticket-controls">
-                            <div class="ticket-price">79.99 RON</div>
-                            <div class="quantity-selector">
-                                <button class="quantity-btn minus">-</button>
-                                <input type="number" value="0" min="0" max="10" class="quantity-input">
-                                <button class="quantity-btn plus">+</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="total-section">
-                    <div class="subtotal">
-                        <span>Subtotal:</span>
-                        <span class="amount">0.00 RON</span>
-                    </div>
-                    <div class="fees">
-                        <span>Service Fee:</span>
-                        <span class="amount">0.00 RON</span>
-                    </div>
-                    <div class="total">
-                        <span>Total:</span>
-                        <span class="amount">0.00 RON</span>
-                    </div>
-                </div>
-
-                <div class="payment-options">
-                    <h5>Payment Method</h5>
-                    <div class="payment-methods">
-                        <div class="payment-method active">
-                            <i class="fab fa-cc-visa"></i>
-                            <span>Credit Card</span>
-                        </div>
-                        <div class="payment-method">
-                            <i class="fab fa-paypal"></i>
-                            <span>PayPal</span>
-                        </div>
-                    </div>
-                </div>
-                <button class="btn checkout-btn">Proceed to Checkout</button>
+            <div class="fees">
+                <span>Service Fee:</span>
+                <span class="amount">0.00 RON</span>
+            </div>
+            <div class="total">
+                <span>Total:</span>
+                <span class="amount">0.00 RON</span>
             </div>
         </div>
 
-        <!-- Javascript -->
-        <script>
-            const sidebar = document.getElementById('sidebar');
-            let hoverTimer;
+        <div class="payment-options">
+            <h5>Payment Method</h5>
+            <div class="payment-methods">
+                <div class="payment-method active">
+                    <i class="fab fa-cc-visa"></i>
+                    <span>Credit Card</span>
+                </div>
+                <div class="payment-method">
+                    <i class="fab fa-paypal"></i>
+                    <span>PayPal</span>
+                </div>
+            </div>
+        </div>
 
-            // Add hover behavior
-            sidebar.addEventListener('mouseenter', () => {
-                hoverTimer = setTimeout(() => {
-                    sidebar.classList.add('expanded');
-                }, 100); // 100ms delay for smoother UX
-            });
+        <button id="buyTicketsBtn" class="btn checkout-btn">Buy tickets</button>
+    </div>
+</div>
 
-            sidebar.addEventListener('mouseleave', () => {
-                clearTimeout(hoverTimer);
-                sidebar.classList.remove('expanded');
-            });
+<!-- Notification Toast -->
+<div id="notification" class="notification hidden"></div>
 
-            // Ticket Modal functionality
-            const ticketButtons = document.querySelectorAll('.event-card .btn');
-            const ticketModal = document.getElementById('ticketModal');
-            const closeModal = document.querySelector('.close-modal');
+<!-- Scripts -->
+<script src="client_home_page.js"></script>
+<script src="logout.js"></script>
 
-            // Open modal with event details
-            ticketButtons.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const eventCard = btn.closest('.event-card');
-                    const eventTitle = eventCard.querySelector('h3').textContent;
-                    const eventMeta = eventCard.querySelectorAll('.event-meta p');
-
-                    const eventLocation = eventMeta[0].textContent.replace('📍 ', '').replace('📌 ', '').trim();
-                    const eventDate = eventMeta[1].textContent.replace('📅 ', '').replace('🗓️ ', '').trim();
-                    const ageRequirement = eventMeta[2].textContent;
-                    const artists = eventMeta[3].textContent;
-                    const theme = eventMeta[4].textContent;
-
-                    document.getElementById('modalEventTitle').textContent = eventTitle;
-                    document.getElementById('modalEventDate').textContent = eventDate;
-                    document.getElementById('modalEventLocation').textContent = eventLocation;
-                    document.getElementById('modalAgeRequirement').textContent = ageRequirement;
-                    document.getElementById('modalArtists').textContent = artists;
-                    document.getElementById('modalTheme').textContent = theme;
-
-                    ticketModal.style.display = 'flex';
-                });
-            });
-
-            // Close modal
-            closeModal.addEventListener('click', () => {
-                ticketModal.style.display = 'none';
-            });
-
-            // Close when clicking outside
-            window.addEventListener('click', (e) => {
-                if (e.target === ticketModal) {
-                    ticketModal.style.display = 'none';
-                }
-            });
-
-            // Quantity controls
-            document.querySelectorAll('.quantity-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const input = this.parentNode.querySelector('.quantity-input');
-                    let value = parseInt(input.value);
-
-                    if (this.classList.contains('plus')) {
-                        value = Math.min(value + 1, parseInt(input.max));
-                    } else {
-                        value = Math.max(value - 1, parseInt(input.min));
-                    }
-
-                    input.value = value;
-                    updateTotals();
-                });
-            });
-
-            // Payment method selection
-            document.querySelectorAll('.payment-method').forEach(method => {
-                method.addEventListener('click', function() {
-                    document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
-
-
-            async function loadEvents() {
-                try {
-                    const res = await fetch('/events');
-                    const events = await res.json();
-
-                    const container = document.getElementById('eventsContainer');
-                    container.innerHTML = '';
-
-                    events.forEach(event => {
-                        const card = document.createElement('div');
-                        card.classList.add('event-card');
-
-                        card.innerHTML = `
-                            <div class="event-image" style="background-image: url('${event.picture_url || 'fallback.jpg'}');"></div>
-
-                            <div class="event-details">
-                                <h3>${event.name}</h3>
-                                <div class="event-meta">
-                                    <p><i class="fas fa-map-marker-alt"></i> ${event.address}</p>
-                                    <p><i class="fas fa-calendar-alt"></i> ${new Date(event.date).toLocaleDateString('en-GB')} at ${event.time.substring(0,5)}</p>
-                                    <p><i class="fas fa-user-tag"></i> Age requirements: ${event.age_requirement}</p>
-                                    <p><i class="fas fa-users"></i> ${event.artist || 'TBA'}</p>
-                                    <p><i class="fas fa-palette"></i> Theme: ${event.theme || 'General'}</p>
-                                    <p><i class="fas fa-ticket-alt"></i> Tickets Available: ${event.nr_of_tickets}</p>
-                                </div>
-                                <a href="#" class="btn">Get Tickets</a>
-                            </div>
-                        `;
-
-                        container.appendChild(card);
-                    });
-
-                    attachTicketListeners(); // Reattach modal logic
-                } catch (err) {
-                    console.error('Error loading events:', err);
-                }
-            }
-            
-
-            function attachTicketListeners() {
-                const ticketButtons = document.querySelectorAll('.event-card .btn');
-                const ticketModal = document.getElementById('ticketModal');
-
-                ticketButtons.forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        const eventCard = btn.closest('.event-card');
-                        const eventTitle = eventCard.querySelector('h3').textContent;
-                        const eventMeta = eventCard.querySelectorAll('.event-meta p');
-
-                        document.getElementById('modalEventTitle').textContent = eventTitle;
-                        document.getElementById('modalEventDate').textContent = eventMeta[1].textContent;
-                        document.getElementById('modalEventLocation').textContent = eventMeta[0].textContent;
-                        document.getElementById('modalAgeRequirement').textContent = eventMeta[2].textContent;
-                        document.getElementById('modalArtists').textContent = eventMeta[3].textContent;
-                        document.getElementById('modalTheme').textContent = eventMeta[4].textContent;
-
-                        ticketModal.style.display = 'flex';
-                    });
-                });
-            }
-
-            window.addEventListener('DOMContentLoaded', loadEvents);
-
-
-            // Update totals when quantities change
-            function updateTotals() {
-                let subtotal = 0;
-
-                document.querySelectorAll('.ticket-type').forEach(type => {
-                    const price = parseFloat(type.querySelector('.ticket-price').textContent.replace('$', ''));
-                    const quantity = parseInt(type.querySelector('.quantity-input').value);
-                    subtotal += price * quantity;
-                });
-
-                const serviceFee = subtotal * 0.1; // 10% service fee
-                const total = subtotal + serviceFee;
-
-                document.querySelector('.subtotal .amount').textContent = subtotal.toFixed(2) + ' RON';
-                document.querySelector('.fees .amount').textContent = serviceFee.toFixed(2) + ' RON';
-                document.querySelector('.total .amount').textContent = total.toFixed(2) + ' RON';
-            }
-
-            // Initialize totals
-            document.querySelectorAll('.quantity-input').forEach(input => {
-                input.addEventListener('change', updateTotals);
-            });
-
-            updateTotals();
-
-            //checkout button functionality
-            document.querySelector('.checkout-btn').addEventListener('click', async () => {
-                const eventName = document.getElementById('modalEventTitle').textContent;
-                const generalQty = parseInt(document.querySelectorAll('.quantity-input')[0].value);
-                const vipQty = parseInt(document.querySelectorAll('.quantity-input')[1].value);
-                const totalTickets = generalQty + vipQty;
-
-                if (totalTickets === 0) {
-                    alert("Please select at least one ticket.");
-                    return;
-                }
-
-                const userToken = localStorage.getItem('token');
-                if (!userToken) {
-                    alert("You must be logged in to book tickets.");
-                    return;
-                }
-
-                try {
-                    const res = await fetch('/book-tickets', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${userToken}`
-                        },
-                        body: JSON.stringify({
-                            eventName,
-                            generalQty,
-                            vipQty
-                        })
-                    });
-
-                    const data = await res.json();
-                    if (data.success) {
-                        alert("Tickets booked successfully!");
-                        document.getElementById('ticketModal').style.display = 'none';
-                    } else {
-                        alert("Booking failed.");
-                    }
-                } catch (err) {
-                    console.error('Error booking tickets:', err);
-                    alert("An error occurred while booking.");
-                }
-            });
-
-            
-
-        </script>
-    </body>
+</body>
 </html>

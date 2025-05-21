@@ -186,3 +186,23 @@ label {
 .submit-btn:hover {
     background-color: #e9bd47;
 }
+.account-prompt {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #0D0C1D;
+    font-size: 0.9rem;
+}
+
+.account-prompt a {
+    background: #F4D35E;
+    padding: 0 5px;
+    border-radius: 5px;
+    color: #0D0C1D;
+    box-shadow:
+            0 10px 30px rgba(233, 189, 71, 0.3), /* Original shadow */
+            3px 3px 0 rgba(233, 189, 71, 0.9); /* 3D offset shadow */
+}
+
+.account-prompt a:hover {
+    background-color: #e9bd47;
+}

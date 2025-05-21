@@ -1,0 +1,51 @@
+.application-card {
+    background-color: #d1cfcf;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 700px;
+    transition: transform 0.2s ease;
+}
+
+.application-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.application-info h3 {
+    color: #000000;
+    font-weight: 750;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.application-info p {
+    font-size: 0.95rem;
+    margin: 5px 0;
+}
+
+.application-info strong {
+    color: #000;
+}
+
+.application-info span {
+    font-weight: bold;
+}
+
+.application-info .status {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.application-info .status.pending {
+    color: gray;
+}
+
+.application-info .status.approved {
+    color: green;
+}
+
+.application-info .status.declined {
+    color: red;
+}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="admin_user_management.css">
     <link rel="icon" type="image/png" href="Logo.png">
 </head>
+
 <body>
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
@@ -29,9 +31,9 @@
                 <i class="fas fa-calendar-alt"></i>
                 <span class="nav-text">My Events</span>
             </a>
-            <a href="home_page.html" class="nav-item">
+            <a href="home_page.html" class="nav-item" id="logoutBtn">
                 <i class="fas fa-sign-out-alt"></i>
-                <span class="nav-text">Sign Out</span>
+                <span class="nav-text">Logout</span>
             </a>
         </div>
     </div>
@@ -45,117 +47,44 @@
             </div>
         </header>
 
-        <section class="section">
-            <div class="search-bar">
-                <input type="text" id="eventSearch" placeholder="Search events..."
-                    onkeypress="if(event.keyCode===13) handleSearch()">
-                <button class="btn search-btn" onclick="handleSearch()">
-                    <i class="fas fa-search"></i>
-                </button>
+
+        <!-- Events Columns Container -->
+        <div class="events-columns">
+            <!-- Active Events Column -->
+            <div class="organiser-column">
+                <h2 class="section-title"><i class="fas fa-calendar-check"></i> Active Events</h2>
+                <div class="search-bar">
+                    <input type="text" id="activeSearch" placeholder="Search active events...">
+                    <button class="btn search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div id="activeEventsContainer"></div>
             </div>
-            <div class="users-container">
-                <!-- Event Card - Upcoming -->
-                <div class="user-card" data-name="summer music festival">
-                    <div class="event-info">
-                        <div class="event-status upcoming">Upcoming</div>
-                        <h3>Summer Music Festival</h3>
-                        <p><i class="fas fa-calendar-day"></i> August 15, 2024 | 18:00</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Central Park, New York</p>
-                    </div>
-                </div>
 
-                <!-- Event Card - Ongoing -->
-                <div class="user-card" data-name="tech conference">
-                    <div class="event-info">
-                        <div class="event-status ongoing">Ongoing</div>
-                        <h3>Tech Conference 2024</h3>
-                        <p><i class="fas fa-calendar-day"></i> June 25-27, 2024</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Convention Center, San Francisco</p>
-                    </div>
+            <!-- Pending Events Column -->
+            <div class="organiser-column pending">
+                <h2 class="section-title"><i class="fas fa-clock"></i> Pending Events</h2>
+                <div class="search-bar">
+                    <input type="text" id="pendingSearch" placeholder="Search pending events...">
+                    <button class="btn search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </div>
-
-                <!-- Event Card - Sold Out -->
-                <div class="user-card" data-name="wine tasting">
-                    <div class="event-info">
-                        <div class="event-status sold-out">Sold Out</div>
-                        <h3>Premium Wine Tasting</h3>
-                        <p><i class="fas fa-calendar-day"></i> July 10, 2024 | 19:30</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Vineyard Estate, Napa Valley</p>
-                    </div>
-                </div>
-
-                <!-- Event Card - Cancelled -->
-                <div class="user-card" data-name="marathon">
-                    <div class="event-info">
-                        <div class="event-status cancelled">Cancelled</div>
-                        <h3>City Marathon</h3>
-                        <p><i class="fas fa-calendar-day"></i> September 5, 2024</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Downtown Chicago</p>
-                    </div>
-                </div>
-
-                <!-- Event Card - Past -->
-                <div class="user-card" data-name="art exhibition">
-                    <div class="event-info">
-                        <div class="event-status past">Past Event</div>
-                        <h3>Modern Art Exhibition</h3>
-                        <p><i class="fas fa-calendar-day"></i> May 1-15, 2024</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Metropolitan Museum</p>
-                    </div>
-                </div>
+                <div id="pendingEventsContainer"></div>
             </div>
-        </section>
+        </div>
 
         <!-- Footer -->
         <footer>
-            <div class="footer-links">
-                <a href="#">About Us</a>
-                <a href="#">Contact</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Careers</a>
-            </div>
-
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-
             <p>&copy; 2025 EventHive. All rights reserved. "Where Moments Become Memories"</p>
         </footer>
     </div>
 
-    <script>
-        // Search functionality
-        function handleSearch() {
-            const searchTerm = document.getElementById('eventSearch').value.trim().toLowerCase();
-            const events = document.querySelectorAll('.user-card');
-            let foundMatch = false;
+    <script src="organiser_myevents.js"></script>
+    <script src="organiser_myevents_tests.js"></script>
 
-            events.forEach(event => event.style.display = 'flex');
-
-            if (searchTerm === '') return;
-
-            events.forEach(event => {
-                const eventName = event.dataset.name.toLowerCase();
-                if (!eventName.includes(searchTerm)) {
-                    event.style.display = 'none';
-                } else {
-                    foundMatch = true;
-                    if (!document.querySelector('.highlight')) {
-                        event.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        event.classList.add('highlight');
-                        setTimeout(() => event.classList.remove('highlight'), 1500);
-                    }
-                }
-            });
-
-            if (!foundMatch) {
-                alert(`No events found matching "${searchTerm}"`);
-            }
-        }
-    </script>
+    <script src="logout.js"></script>
 </body>
+
 </html>
